@@ -6,6 +6,8 @@
 
 -->
 
+<!DOCTYPE>
+
 <html>
 
   <head>
@@ -16,8 +18,11 @@
     <!-- Links to the Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Fugaz+One&effect=shadow-multiple' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Chewy&effect=shadow-multiple' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+
 
   </head>
 
@@ -27,34 +32,112 @@
 
       <header>
 
-        <span class="house"><i class="fa fa-home fa-2x"></i></span>
+        <span class="house"><i class="fa fa-home fa-3x"></i></span>
 
-        <h1 class="font-effect-shadow-multiple" style="color:brown;">WHAT'S IN MY FRIDGE?</h1>
+        <h1 class="font-effect-shadow-multiple RecipeName" style="color:brown;">BBQ Chicken Pizza</h1>
 
       </header>
 
       <div class="Content">
 
-        <div class="sparkline">
+        <div class="Ingridents-Container">
+
+          <div>
+
+            <div class="imgContainer"></div>
+
+            <div class="RContent">
+
+              <p>
+                Indulge in the perfect BBQ Chicken Pizza for your family and friends or enjoy as a late night snack just for yourself. Anytime is pizza night with this wonderful handmade pizza recipe.
+              </p>
+
+              <table>
+                <tr>
+                  <th width="500px">
+                    <h2>Ingredients</h2>
+                    <hr/>
+
+                  </th>
+                  <th width="500px">
+                    <h2>Freshness</h2>
+                    <hr/>
+                  </th>
+                </tr>
+
+                <tr>
+                  <td class="Ingridents">1 Pound of Chicken</td>
+                  <td>
+                    <div class="Sparklines"><span id="One" class="Line">|</span></div><span class="YellowGreenBold">Fresh</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="Ingridents">1 Cut Chopped Red Onion</td>
+                  <td>
+                    <div class="Sparklines"><span id="Two" class="Line">|</span></div><span class="RedBold">Use Soon!</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="Ingridents">2 Cups of Cheese</td>
+                  <td>
+                    <div class="Sparklines"><span id="Three" class="Line">|</span></div><span class="OrangeBold">Alright</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="Ingridents">1 Bottle of BBQ Sauce</td>
+                  <td>
+                    <div class="Sparklines"><span id="Four" class="Line">|</span></div><span class="RedBold">Use Soon!</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="Ingridents">1/2 Cup of Cilantro</td>
+                  <td>
+                    <div class="Sparklines"><span id="Five" class="Line">|</span></div><span class="GreenBold">Very Fresh</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="Ingridents">1 Pre-baked Pizza Crust</td>
+                  <td>
+                    <div class="Sparklines"><span id="Six" class="Line">|</span></div><span class="RedBold">Use Soon!</span>
+                  </td>
+                </tr>
+
+              </table>
+
+              <h2>Directions</h2>
+              <hr />
+
+              <ol class="Directions">
+
+                <li>Preheat oven to 350&#8457;/175&#8451;.</li>
+
+                <li>Place pizza crust on baking sheet.</li>
+
+                <li>Spread BBQ sauce on the crust.</li>
+
+                <li>Add toppings to customize your pizza</li>
+
+                <li>Bake for 15 minutes until cheese has melted.</li>
+
+              </ol>
+
+            </div>
+
+          </div>
 
         </div>
 
-
       </div>
 
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FitText.js/1.2.0/jquery.fittext.min.js"></script>
-    <script>
-      jQuery(".font-effect-shadow-multiple").fitText(1.2);
-
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script src=https://rawgit.com/FVANCOP/ChartNew.js/master/ChartNew.js></script>
-    <script src="vendor/chart.js/chart.js"></script>
-    <script src="vendor/list.js/list.js"></script>
-    <script src="js/chart.js"></script>
-    <script src="js/app.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+      <script src="vendor/chart.js/chart.js"></script>
+      <script src="js/chart.js"></script>
+      <script src="js/app.js"></script>
 
   </body>
 

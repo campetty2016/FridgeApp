@@ -6,6 +6,8 @@
 
 -->
 
+<!DOCTYPE>
+
 <html>
 
   <head>
@@ -17,10 +19,9 @@
     <link href='https://fonts.googleapis.com/css?family=Fugaz+One&effect=shadow-multiple' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Chewy&effect=shadow-multiple' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-
-
 
   </head>
 
@@ -30,34 +31,80 @@
 
       <header>
 
-        <span class="house"><i class="fa fa-home fa-2x"></i></span>
+        <span class="house"><i class="fa fa-home fa-3x"></i></span>
 
         <h1 class="font-effect-shadow-multiple" style="color:brown;">RECIPES</h1>
 
       </header>
 
-      <div class="Recipes-Container">
+      <div class="Content">
 
-        <h2>Here are the Top 5 Recipes You can Make</h2>
-        <hr />
-        <hr/>
+        <div style="display:flex;">
 
-        <div class="RecipeContent">
+          <div class="FreshLegend">
 
-          <ol class="RecipesList">
-            <li>
-              <h3>Pepporni Pizza</h3>
-            </li>
-            <li>
-              <h3>Container of Sour Cream</h3>
-            </li>
-            <li>
-              <h3>Stick of Butter</h3>
-            </li>
-            <li>
-              <h3>containers of Yogurt</h3>
-            </li>
-          </ol>
+            <h4>Days til Expiration</h4>
+            <hr />
+
+            <ul>
+
+              <li class="Red">
+                <p>1 Day</p>
+              </li>
+              <li class="Yellow">
+                <p>3 Days</p>
+              </li>
+              <li class="Green">
+                <p>5 Days</p>
+              </li>
+
+            </ul>
+
+          </div>
+
+          <div class="Recipes-Container">
+
+            <div class="RecipeContent">
+
+              <h2>Top 5 Recipes You Can Make</h2>
+              <hr />
+              <hr/>
+
+              <div class="foods">
+
+                <ol class="RecipesList">
+
+                  <li>
+                    <div class="recipe">
+                      <h3 id="Pizza" class="Red">
+
+                      <div class="Pizza Thumbnail"></div>BBQ Chicken Pizza</h3>
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="recipe">
+                      <h3 class="Green"><div id="Burger" class="Thumbnail"></div>Classic Hamburger</h3></div>
+                  </li>
+                  <li>
+                    <div class="recipe">
+                      <h3 class="Yellow"><div id="Chicken" class="Thumbnail"></div>Fried Chicken</h3></div>
+                  </li>
+                  <li>
+                    <div class="recipe">
+                      <h3 class="Green"><div id="Alfredo" class="Thumbnail"></div>Chicken Alfredo</h3></div>
+                  </li>
+                  <li>
+                    <div class="recipe">
+                      <h3 class="Yellow"><div id="Tacos" class="Thumbnail"></div>Tacos</h3></div>
+                  </li>
+                </ol>
+                <h3 id="More">View More Recipes >></h3>
+              </div>
+
+            </div>
+
+          </div>
 
         </div>
 
@@ -65,17 +112,8 @@
 
     </div>
 
-    </div>
-
-    <script src="jquery.fittext.js"></script>
-    <script>
-      jQuery("h1").fitText();
-
-    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script src=https://rawgit.com/FVANCOP/ChartNew.js/master/ChartNew.js></script>
     <script src="vendor/chart.js/chart.js"></script>
-    <script src="vendor/list.js/list.js"></script>
     <script src="js/chart.js"></script>
     <script src="js/app.js"></script>
 

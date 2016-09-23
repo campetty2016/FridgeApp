@@ -1,9 +1,13 @@
 *, html {
   margin: 0;
 }
-body {
+html, body {
   background-color: honeydew;
-  /*background-image: url("../cupcakes.png");*/
+  height: 100%;
+}
+.wrapper {
+  height: 100%;
+  width: 100%;
 }
 .blackModal {
   display: none;
@@ -15,17 +19,11 @@ body {
   width: 100%;
   height: 100%;
 }
-.wrapper {
-  /*width: 1024px;
-  height: 400px;
-  margin: auto;*/
-}
 header {
   display: flex;
   justify-content: center;
   flex-direction: row;
-  rgba(255, 168, 0, .81) width: 100%;
-  height: 180px;
+  width: 100%;
   background-color: rgba(255, 168, 0, .7);
   border-bottom: 1px double brown;
 }
@@ -35,7 +33,6 @@ header {
 }
 h1, .font-effect-shadow-multiple {
   font-family: 'Fugaz One', cursive;
-  /*font-family: 'Chewy', cursive;*/
   justify-content: center;
   font-size: 8em;
   color: #94654C;
@@ -48,15 +45,9 @@ h1, .font-effect-shadow-multiple {
   margin: auto;
   width: 900px;
   height: 100px;
-  /*height: 600px;*/
-  /*background-color: linen;*/
-  /*background-color: rgba(236, 199, 129, .6);
-  background-color: white;*/
   position: relative;
   align-self: center;
   text-align: center;
-  /*background-image: url("../Downloads/cupcakes.png");*/
-  /*background-repeat: repeat;*/
 }
 .Content2 {
   display: flex;
@@ -64,50 +55,68 @@ h1, .font-effect-shadow-multiple {
   align-items: center;
   margin: auto;
   width: auto;
-  /* padding-left: 25px; */
-  /* width: 900px; */
   height: 100px;
-  /* height: 600px; */
-  /* background-color: linen; */
   position: relative;
   align-self: center;
   text-align: center;
-  /* background-image: url("../Downloads/cupcakes.png"); */
-  /* background-repeat: repeat; */
 }
-.Circle-Container, .Chart-Container, .Recipes-Container {
-  /* width: 850px; */
+.Circle-Container, .Icons-Container, .Recipes-Container, .Chart-Container {
   width: 100%;
   padding-top: 50px;
   height: 420px;
-  /* display: flex; */
-  /* margin-top: 15px; */
   margin: auto;
   align-self: center;
   justify-content: center;
   position: relative;
-  /* justify-content: center; */
-  /* flex-direction: column; */
-  /* background-color: black; */
-  /* position: absolute; */
 }
 .RecipeContent {
-  display: flex;
+  overflow: auto;
+  background-color: #D8A06A;
+  border-radius: 1em;
+  border: 2px double darkred;
+  padding: 10px;
+  width: 700px;
+  overflow-x: hidden;
+  text-align: left;
+  font-weight: 600;
+  text-shadow: 1px 1px 1px black;
+  letter-spacing: 2px;
+  font-family: 'Oswald', sans-serif;
+  flex-direction: column;
+}
+.RecipeContent h2 {
+  color: darkred;
+  text-shadow: 1px 1px 1px #eee;
+  font-family: 'Oswald', sans-serif;
+}
+.RecipeContent hr {
+  border: 1px double brown;
+}
+.foods {
+  margin-top: 25px;
+  width: 750px;
+  flex-direction: column;
+  text-align: left;
+  font-weight: 600;
 }
 .ChartContainer2 {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
   padding-top: 50px;
   height: 420px;
   width: auto;
-  /* display: flex; */
-  /* margin-top: 15px; */
-  margin: auto;
   align-self: center;
   justify-content: center;
   position: relative;
-  /* justify-content: center; */
-  /* flex-direction: column; */
-  /* background-color: black; */
-  /* position: absolute; */
+}
+.recipe {
+  flex-direction: row;
+  display: inline-flex;
+  margin-left: 5px;
+  width: auto;
+  margin: auto;
+  height: 100px;
 }
 .DairyPList {
   font-family: 'Fugaz One', cursive;
@@ -120,6 +129,17 @@ h1, .font-effect-shadow-multiple {
 }
 .RecipesList {
   margin: auto;
+  /* margin-top: 0; */
+  /* text-align: center; */
+  text-indent: 10px;
+}
+.RecipesList h3:hover, .RecipesList h3:active, .Thumbnail:hover, .Thumbnail:active {
+  cursor: pointer;
+  text-shadow: 3px 3px 3px black, 3px 3px 3px white;
+}
+#More:hover, #More:active {
+  cursor: pointer;
+  color: black;
 }
 #smallChart {
   display: none;
@@ -141,9 +161,9 @@ h1, .font-effect-shadow-multiple {
   width: 20px;
   height: 20px;
   margin-right: 15px;
-  font-size: 2em;
+  font-size: 1.5em;
   font-family: 'Helvetica', cursive;
-  font-weight: 600;
+  font-weight: 500;
   padding-bottom: 10px;
 }
 .chart-legend ul {
@@ -160,7 +180,6 @@ h1, .font-effect-shadow-multiple {
   padding: 8px;
   float: left;
   margin-right: -25px;
-  /* margin-bottom: 50px; */
   position: relative;
   z-index: 1;
 }
@@ -175,6 +194,7 @@ h1, .font-effect-shadow-multiple {
   position: relative;
   z-index: 2;
   color: white;
+  cursor: pointer;
   text-shadow: 3px 3px 3px brown;
   border: 5px double brown;
 }
@@ -186,8 +206,15 @@ h2 {
   letter-spacing: 2px;
 }
 ol li, h3 {
-  font-family: 'Passion One', cursive;
+  /* font-family: 'Passion One', cursive; */
   font-size: 2em;
+  color: darkred;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 1px black;
+}
+#More {
+  text-shadow: 1px 1px 1px white;
+  cursor: pointer;
 }
 .settings, .silverware, .pie {
   display: block;
@@ -203,15 +230,17 @@ ol li, h3 {
   border: 2px double #eee;
   padding: 10px;
   margin: auto;
-  margin-top: 42px;
-  /* width: 500px; */
-  height: 750px;
+  height: 5000px;
+  width: 340px;
+  margin-left: 25px;
   display: none;
+  flex-direction: column;
 }
 #foods h2 {
   font-size: 2.5em;
   font-weight: 100;
   color: #fff;
+  margin: 0;
   text-shadow: 2px 2px 2px brown;
 }
 #foods li {
@@ -222,16 +251,480 @@ ol li, h3 {
   margin-top: 25px;
   text-align: left;
   font-family: 'Oswald', sans-serif;
-  text-indent: 25px;
+  text-indent: 0px;
+}
+#foods hr {
+  border: 1px double darkred;
+}
+.smallLegend {
+  display: inline-block;
+  /* width: 20px; */
+  /* height: 20px; */
+  margin-right: 15px;
+  /* font-size: 2em; */
+  font-family: 'Helvetica', cursive;
+  font-weight: 600;
+  padding-bottom: 10px;
+}
+.None {
+  display: none;
+}
+.FreshLegend {
+  display: inline-block;
+  /* font-size: 1em; */
+  width: 300px;
+  margin: auto;
+  color: white;
+  background-color: darkred;
+  border-radius: 1em;
+  padding: 10px;
+  border: 2px double brown;
+  margin-top: 48px;
+  margin-right: 25px;
+  font-family: 'Oswald', sans-serif;
+}
+.FreshLegend h4 {
+  font-size: 2em;
+  width: auto;
+  text-shadow: 1px 1px 1px black;
+}
+.FreshLegend hr {
+  margin-bottom: 15px;
+  border: 1px double brown;
+}
+.FreshLegend ul {
+  color: lightgreen;
+  text-align: left;
+  text-shadow: 1px 1px 1px black;
+  list-style-type: square;
+  font-size: 2em;
+}
+.Red {
+  color: red;
+}
+.Yellow {
+  color: yellow;
+}
+.Green {
+  color: lightgreen;
+}
+.imgContainer {
+  background-image: url("../img/Pizza.jpg");
+  height: 100%;
+  border: 1px double darkred;
+  border-top-right-radius: 1em;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-top-left-radius: 1em;
+}
+.imgContainer img {
+  width: 100%;
+  height: 100%;
+}
+.Ingridents-Container {
+  padding-top: 50px;
+  height: 420px;
+  margin: auto;
+  align-self: center;
+  justify-content: center;
+  position: relative;
+}
+.RContent {
+  background-color: honeydew;
+  height: auto;
+  border: 2px double darkred;
+  border-bottom-right-radius: 1em;
+  border-top: none;
+  border-bottom-left-radius: 1em;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+.RContent table {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+.RContent h2 {
+  height: 50px;
+  padding-bottom: 25px;
+  text-align: left;
+}
+.RContent tr {
+  height: 50px;
+}
+.RContent p {
+  text-align: left;
+  padding-top: 25px;
+  font-size: 1.5em;
+  font-weight: 500;
+  font-family: 'Oswald', sans-serif;
+}
+.RContent p::first-letter {
+  color: darkred;
+  font-size: 2em;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.RContent hr {
+  width: 90%;
+  margin-bottom: 25px;
+  border: 1px double darkred;
+}
+.RecipeName {
+  font-size: 7vw;
+}
+.Fridge {
+  font-size: 6.8vw;
+}
+.Ingridents {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2em;
+  font-weight: 500
+}
+.GreenBold {
+  color: green;
+  font-size: 2em;
+  font-weight: 800;
+  font-family: 'Oswald', sans-serif;
+  margin-left: 25px;
+  letter-spacing: 1px;
+}
+.YellowGreenBold {
+  color: yellowgreen;
+  font-size: 2em;
+  font-weight: 800;
+  font-family: 'Oswald', sans-serif;
+  margin-left: 25px;
+  letter-spacing: 1px;
+}
+.OrangeBold {
+  color: orange;
+  font-size: 2em;
+  font-weight: 800;
+  font-family: 'Oswald', sans-serif;
+  margin-left: 25px;
+  letter-spacing: 1px;
+}
+.RedBold {
+  color: red;
+  font-size: 2em;
+  font-weight: 900;
+  font-family: 'Oswald', sans-serif;
+  margin-left: 25px;
+  letter-spacing: 1px;
+  text-decoration: underline;
+  background-color: yellow;
+  border-radius: 1em;
+}
+.Directions {
+  text-align: left;
+  font-family: 'Oswald', SANS-SERIF;
+}
+.Directions li {
+  color: black;
+  text-shadow: none;
+  letter-spacing: 1px;
+}
+.Thumbnail {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  background-color: transparent;
+  background-size: cover;
+  border-radius: 100%;
+  margin-right: 5px;
+  float: left;
+  border: 2px double brown;
+}
+.Thumbnail:hover, .Thumbnail:active {
+  cursor: pointer;
+  text-shadow: 3px 3px 3px black, 3px 3px 3px white;
+}
+.Pizza {
+  background-image: url("../img/Pizza.jpg");
+}
+#Alfredo {
+  background-image: url("../img/Alfredo.jpg");
+}
+#Tacos {
+  background-image: url("../img/Tacos.jpg");
+}
+#Burger {
+  background-image: url("../img/Burger.jpg");
+  background-position: center;
+}
+#Chicken {
+  background-image: url("../img/FriedChicken.jpg");
+}
+.Sparklines {
+  background: linear-gradient(to right, red, #f06d06, yellow, green);
+  width: 200px;
+  height: 35px;
+  border: 2px double black;
+  display: inline-block;
+  position: relative;
+}
+.Line {
+  font-weight: 900;
+  font-size: 3.5em;
+  position: absolute;
+  line-height: .5;
+}
+#One {
+  top: 0;
+  right: 50px;
+}
+#Two {
+  top: 0;
+  left: 30px;
+}
+#Three {
+  top: 0;
+  right: 100px;
+}
+#Four {
+  top: 0;
+  left: 45px;
+}
+#Five {
+  top: 0;
+  right: 20px;
+}
+#Six {
+  top: 0;
+  left: 10px;
+}
+html[data-useragent='IE'] .Content {
+  display: block;
+}
+.Icons-Container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.ct-chart-donut {
+  height: 100%;
+}
+.Icon {
+  display: flex;
+  width: 265px;
+  height: 265px;
+  border-radius: 100%;
+  overflow: hidden;
+  border: 5px double brown;
+  margin-top: 5px;
+  margin-right: 25px;
+  margin-bottom: 25px;
+}
+.Icon div:hover {
+  color: black;
+  text-shadow: 2px 2px 2px white, 2px 2px 2px white, 2px 2px 2px white;
+  cursor: pointer;
+}
+.IconSmall {
+  width: 150px;
+  height: 150px;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+}
+.IconSmall h5 {
+  margin-top: 5px;
+}
+.IconSmall {
+  width: 150px;
+  height: 150px;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+}
+.IconSmall:hover, .IconSmall:active {
+  cursor: pointer;
+}
+.BigIconSmall {
+  width: 200px;
+  height: 200px;
+  margin-top: 5px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+.BigIconSmall:hover, .BigIconSmall:active {
+  cursor: pointer;
+}
+#Icon1 {
+  background-image: url("../img/Fruits.jpg");
+  background-size: cover;
+}
+#Icon2 {
+  background-image: url("../img/Dairy.jpg");
+  background-size: cover;
+}
+#Icon3 {
+  background-image: url("../img/Herbs.jpg");
+  background-size: cover;
+}
+#Icon4 {
+  background-image: url("../img/Breads.jpg");
+  background-size: cover;
+}
+#Icon5 {
+  background-image: url("../img/Vegetables.jpg");
+  background-size: cover;
+}
+#Icon6 {
+  background-image: url("../img/Proteins.jpg");
+  background-size: cover;
+}
+#Icon7 {
+  background-image: url("../img/Condiments.jpg");
+  background-size: cover;
+}
+h5 {
+  margin: auto;
+  font-size: 2.5em;
+  margin-top: 5px;
+  color: white;
+  text-shadow: 2px 2px 2px black, 2px 2px 2px black, 2px 2px 2px black;
+  text-align: center;
+  font-family: 'Fugaz One', cursive;
+  letter-spacing: 1px;
 }
 
-/* Donut charts get built from Pie charts but with a fundamentally difference in the drawing approach. The donut is drawn using arc strokes for maximum freedom in styling */
+/*make a color different to fill-donut series*/
 
-.ct-series-a .ct-slice-donut {
-  /* give the donut slice a custom colour */
-  stroke: blue;
-  /* customize stroke width of the donut slices in CSS. Note that this property is already set in JavaScript and label positioning also relies on this. In the right situation though it can be very useful to style this property. You need to use !important to override the style attribute */
-  stroke-width: 5px !important;
-  /* create modern looking rounded donut charts */
-  stroke-linecap: round;
+.ct-chart-donut .ct-series-a .ct-slice-donut {
+  stroke: rgba(255, 255, 255, .9);
+}
+
+/*make b hidden*/
+
+.ct-chart-donut .ct-series-b .ct-slice-donut {
+  stroke: rgba(38, 42, 40, .6);
+  opacity: 0.0;
+}
+
+/*make all fill-donut series visible and set color*/
+
+.ct-chart-donut .ct-fill-donut .ct-slice-donut {
+  stroke: rgba(38, 42, 40, .6);
+  opacity: 1;
+}
+.Icons-Container table tr {
+  width: 900px;
+}
+.Icons-Container table td {
+  width: 150px;
+}
+@media screen and (max-width: 860px) {
+  body {
+    overflow-x: hidden;
+  }
+  header {
+    height: auto;
+    text-align: center;
+    min-width: 100%;
+  }
+  h1, .font-effect-shadow-multiple {
+    font-family: 'Fugaz One', cursive;
+    justify-content: center;
+    font-size: 10vw;
+    color: #94654C;
+    letter-spacing: 8px;
+  }
+  .Circle-Container, .Chart-Container, .Recipes-Container {
+    padding-top: 50px;
+    height: 420px;
+    margin: auto;
+    align-self: center;
+    justify-content: center;
+    position: relative;
+  }
+  .Content {
+    margin: 0;
+    display: inline-flex;
+    max-width: 100%;
+    max-height: 1000px;
+    overflow: hidden;
+  }
+  .smaller {
+    max-width: 400px;
+    max-height: 400px;
+  }
+  .chart-legend li span {
+    display: inline-block;
+    width: 12px;
+    height: 10px;
+    margin-right: 10px;
+    font-size: 1.2em;
+    font-family: 'Helvetica', cursive;
+    font-weight: 600;
+    padding-bottom: 10px;
+  }
+  .smallLegend {
+    display: inline-block;
+    width: 10px;
+    height: 5px;
+    margin-right: 15px;
+    margin-bottom: 2px;
+    font-size: 1.2em;
+    font-family: 'Helvetica', cursive;
+    font-weight: 00;
+    padding-bottom: 10px;
+  }
+  .None {
+    display: none;
+  }
+  #foods {
+    overflow: auto;
+    background-color: rgb(228, 172, 113);
+    border-radius: 1em;
+    border: 2px double #eee;
+    padding: 10px;
+    margin-left: 25px;
+    display: none;
+    width: 175px;
+    flex-direction: column;
+  }
+  #foods h2 {
+    font-size: 1.2em;
+    font-weight: 100;
+    color: #fff;
+    margin: 0;
+    text-shadow: 2px 2px 2px brown;
+  }
+  #foods li {
+    font-size: 1em;
+    font-weight: 100;
+    color: #fff;
+    text-shadow: 1px 1px 1px black;
+    margin-top: 25px;
+    text-indent: 0;
+    text-align: left;
+    font-family: 'Oswald', sans-serif;
+  }
+  .RecipeContent h2 {
+    font-size: 2.5em;
+  }
+  .Icon {
+    display: flex;
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    overflow: hidden;
+    background-color: white;
+    border: 5px double brown;
+    margin-right: 15px;
+    margin-bottom: 25px;
+  }
+  .IconSmall {
+    width: 120px;
+    height: 120px;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    font-size: 1em;
+  }
 }

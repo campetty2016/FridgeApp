@@ -16,7 +16,8 @@
     <!-- Links to the Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Fugaz+One&effect=shadow-multiple' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Chewy&effect=shadow-multiple' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css" rel="stylesheet" type="text/css" />
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 
@@ -30,43 +31,90 @@
 
       <header>
 
-        <span class="house"><i class="fa fa-home fa-2x"></i></span>
+        <span class="house"><i class="fa fa-home fa-3x"></i></span>
 
-        <h1 class="font-effect-shadow-multiple" style="color:brown;">WHAT'S IN MY FRIDGE?</h1>
+        <h1 class="font-effect-shadow-multiple Fridge" style="color:brown;">WHAT'S IN MY FRIDGE?</h1>
 
       </header>
 
       <div class="Content">
 
-        <div class="Chart-Container">
+        <div class="Icons-Container">
 
-          <div id="legend" class="chart-legend"></div>
+          <div style="display:flex; margin: auto; flex-direction: row;">
 
-          <div id="chart" width="700" height="700">
+            <table>
 
-            <canvas id="myChart" width="700" height="700"></canvas>
+              <tr>
+
+                <td>
+                  <div id="Icon1" class="Icon">
+                    <div id="ct-chart1" class="ct-chart"></div>
+                  </div>
+                </td>
+                <td>
+                  <div id="Icon2" class="Icon">
+                    <div id="ct-chart2" class="ct-chart"></div>
+                  </div>
+                </td>
+                <td>
+                  <div id="Icon3" class="Icon">
+                    <div id="ct-chart3" class="ct-chart"></div>
+                  </div>
+                </td>
+
+              </tr>
+
+              <tr>
+
+                <td>
+                  <div id="Icon4" class="Icon">
+                    <div id="ct-chart4" class="ct-chart"></div>
+                  </div>
+                </td>
+                <td>
+                  <div id="Icon5" class="Icon">
+                    <div id="ct-chart5" class="ct-chart"></div>
+                  </div>
+
+                </td>
+                <td>
+                  <div id="Icon6" class="Icon">
+                    <div id="ct-chart6" class="ct-chart"></div>
+                  </div>
+                </td>
+
+              </tr>
+
+              <tr>
+
+                <td></td>
+                <td rowspan="2">
+                  <div id="Icon7" class="Icon">
+                    <div id="ct-chart7" class="ct-chart"></div>
+                  </div>
+                </td>
+
+              </tr>
+
+            </table>
+
+            <div id="foods"></div>
 
           </div>
 
         </div>
 
-        <div id="foods"></div>
-
       </div>
 
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FitText.js/1.2.0/jquery.fittext.min.js"></script>
-    <script>
-      jQuery("h1").fitText();
-
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script src=https://rawgit.com/FVANCOP/ChartNew.js/master/ChartNew.js></script>
-    <script src="vendor/chart.js/chart.js"></script>
-    <script src="vendor/list.js/list.js"></script>
-    <script src="js/chart.js"></script>
-    <script src="js/app.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src=https://rawgit.com/FVANCOP/ChartNew.js/master/ChartNew.js></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <script type="text/javascript" src="js/chartist-plugin-fill-donut.min.js"></script>
+    <script type="text/javascript" src="js/chart.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
 
   </body>
 

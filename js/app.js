@@ -22,7 +22,13 @@ $(".house").click(function(){
     window.location = Recipes;
   });
 
-  
+  $("#Pizza").click(function(){
+    var Pizza = "recipe.html";
+    window.location = Pizza;
+  });
+
+	var doc = document.documentElement;
+	doc.setAttribute('data-useragent', "IE");
 }
 
 

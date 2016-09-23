@@ -1,223 +1,23 @@
-var data = [
+
+var chart = new Chartist.Pie('#ct-chart1',
     {
-        value: 15,
-        color:"#F7464A",
-        highlight: "#FF5A5E",
-        label: "Fruits"
-    },
-    {
-        value: 40,
-        color: "#46BFBD",
-        highlight: "#5AD3D1",
-        label: "Dairy"
-    },
-    {
-        value: 15,
-        color: "#FDB45C",
-        highlight: "#FFC870",
-        label: "Vegetables"
-    },
-    {
-        value: 20,
-        color: "rgb(217,59,206)",
-        highlight: "rgb(217,59,206)",
-        label: "Protein"
-    },
-    {
-        value: 10,
-        color: "rgb(218,226,67)",
-        highlight: "rgb(218,226,67)",
-        label: "Condiments"
-    },
-];
-
-var Chartoptions = {
-
-  tooltipTemplate: "<%= label %> <%= value %>%",
-
-  //Boolean - Whether we should show a stroke on each segment
-  segmentShowStroke : true,
-
-  //String - The colour of each segment stroke
-  segmentStrokeColor : "#fff",
-
-  //Number - The width of each segment stroke
-  segmentStrokeWidth : 2,
-
-  //Number - Amount of animation steps
-  animationSteps : 100,
-
-  // Boolean - Whether to animate the chart
-   animation: true,
-
-   // String - Animation easing effect
-   // Possible effects are:
-   // [easeInOutQuart, linear, easeOutBounce, easeInBack, easeInOutQuad,
-   //  easeOutQuart, easeOutQuad, easeInOutBounce, easeOutSine, easeInOutCubic,
-   //  easeInExpo, easeInOutBack, easeInCirc, easeInOutElastic, easeOutBack,
-   //  easeInQuad, easeInOutExpo, easeInQuart, easeOutQuint, easeInOutCirc,
-   //  easeInSine, easeOutExpo, easeOutCirc, easeOutCubic, easeInQuint,
-   //  easeInElastic, easeInOutSine, easeInOutQuint, easeInBounce,
-   //  easeOutElastic, easeInCubic]
-   animationEasing: "easeInOutQuad",
-
-   // Boolean - If we should show the scale at all
-   showScale: true,
-
-   // Boolean - If we want to override with a hard coded scale
-   scaleOverride: false,
-
-   // ** Required if scaleOverride is true **
-   // Number - The number of steps in a hard coded scale
-   scaleSteps: null,
-   // Number - The value jump in the hard coded scale
-   scaleStepWidth: null,
-   // Number - The scale starting value
-   scaleStartValue: null,
-
-   // String - Colour of the scale line
-   scaleLineColor: "rgba(0,0,0,.1)",
-
-   // Number - Pixel width of the scale line
-   scaleLineWidth: 1,
-
-   // Interpolated JS string - can access value
-   scaleLabel: "<%=value%>",
-
-   // Boolean - Whether the scale should stick to integers, not floats even if drawing space is there
-   scaleIntegersOnly: true,
-
-   // Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-   scaleBeginAtZero: false,
-
-   // String - Scale label font declaration for the scale label
-   scaleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
-
-   // Number - Scale label font size in pixels
-   scaleFontSize: 30,
-
-   // String - Scale label font weight style
-   scaleFontStyle: "normal",
-
-   // String - Scale label font colour
-   scaleFontColor: "#666",
-
-   // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-   maintainAspectRatio: true,
-
-   // String - Tooltip background colour
-   tooltipFillColor: "rgba(0,0,0,0.8)",
-
-   // String - Tooltip label font declaration for the scale label
-   tooltipFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
-
-   // Number - Tooltip label font size in pixels
-   tooltipFontSize: 25,
-
-   // String - Tooltip font weight style
-   tooltipFontStyle: "bold",
-
-   // String - Tooltip title font colour
-   tooltipTitleFontColor: "#fff",
-
-   // Number - pixel width of padding around tooltip text
-   tooltipYPadding: 8,
-
-   // Number - pixel width of padding around tooltip text
-   tooltipXPadding: 8,
-
-   // Number - Size of the caret on the tooltip
-   tooltipCaretSize: 15,
-
-   // Number - Pixel radius of the tooltip border
-   tooltipCornerRadius: 6,
-
-   // Number - Pixel offset from point x to tooltip edge
-   tooltipXOffset: 10,
-};
-
-var ctx = $("#myChart").get(0).getContext("2d");
-
-var Chart = new Chart(ctx).Pie(data, Chartoptions);
-//
-// $("#myChart").click(
-//                       function(evt){
-//                           var activePoints = Chart.getSegmentsAtEvent(evt);
-//                           var url = "new.html";
-//                           window.location.href=url;
-//                       }
-//                   );
-
-    document.getElementById('legend').innerHTML = Chart.generateLegend();
-
-$(".add").click(function(){
-
-  Chart.addData({
-      value: 130,
-      color: "#B48EAD",
-      highlight: "#C69CBE",
-      label: "Purple"
-  });
-
-});
-
-
- $("#myChart").click(function(evt){
-
-   var Segments = Chart.getSegmentsAtEvent(evt);
-
-   if (Segments[0].label == "Dairy"){
-    alert("Dairy");
-
-    // $("#myChart").addClass("smaller");
-    // $("#chart").addClass("smaller");
-    // $("canvas").addClass("smaller");
-    $(".Content").addClass("Content2");
-    $(".Chart-Container").addClass("ChartContainer2");
-    $(".chart-legend").addClass("chart-legend2");
-    $("#foods").css("display", "block");
-    $("#foods").html("<h2>Dairy Products in my Fridge</h2><ul><li>2 Gallons of Milk</li><li>1 Container of Sour Cream</li><li>1 Stick of Butter</li><li>4 containers of Yogurt</li></ul>");
-
-  }else if (Segments[0].label == "Fruits"){
-     alert("Fruits");
-     $(".Content").addClass("Content2");
-
-  }else if (Segments[0].label == "Vegetables"){
-      alert("Vegetables");
-      $("#smallChart").css("display", "block");
-      $("#myChart").css("display", "none");
-
-  }else if (Segments[0].label == "Protein"){
-       alert("Protein");
-       $("#smallChart").css("display", "block");
-       $("#myChart").css("display", "none");
-
-  }else {
-          alert("Condiments");
-          $("#smallChart").css("display", "block");
-          $("#myChart").css("display", "none");
-  }
-});
-
-var chart = new Chartist.Pie('.ct-chart',
-    {
-        series: [100, 100],
-        labels: ['', '']
-    }, {
-        donut: true,
-        donutWidth: 20,
-        startAngle: 210,
-        total: 100,
+      series: [10, 50 ],
+      labels: ['', '']
+  }, {
+      donut: true,
+      donutWidth: 40,
+      startAngle: 300,
+      total: 200,
         showLabel: false,
         plugins: [
             Chartist.plugins.fillDonut({
                 items: [{
-                    content: '<i class="fa fa-tachometer"></i>',
+                    content: '',
                     position: 'bottom',
                     offsetY : 10,
                     offsetX: -2
                 }, {
-                    content: '<h3>100<span class="small">%</span></h3>'
+                    content: '<h5>Fruits</h5><div id="Apple"><h5>15<span class="small">%</span></h5></div>'
                 }]
             })
         ],
@@ -251,32 +51,3298 @@ chart.on('draw', function(data) {
         });
 
         // We can't use guided mode as the animations need to rely on setting begin manually
-        // See http://gionkunz.github.io/chartist-js/api-documentation.html#chartistsvg-function-animate
+
         data.element.animate(animationDefinition, true);
     }
 });
 
+    var chart = new Chartist.Pie('#ct-chart2',
+        {
+          series: [15, 50 ],
+          labels: ['', '']
+      }, {
+          donut: true,
+          donutWidth: 40,
+          startAngle: 300,
+          total: 200,
+            showLabel: false,
+            plugins: [
+                Chartist.plugins.fillDonut({
+                    items: [{
+                        content: '',
+                        position: 'bottom',
+                        offsetY : 10,
+                        offsetX: -2
+                    }, {
+                        content: '<div style="display:flex; flex-direction:column;"><h5>Dairy</h5><div id="Milk"><h5>25<span class="small">%</span></h5></div>'
+                    }]
+                })
+            ],
+        });
 
+    chart.on('draw', function(data) {
+        if(data.type === 'slice' && data.index == 0) {
+            // Get the total path length in order to use for dash array animation
+            var pathLength = data.element._node.getTotalLength();
 
-$('#filter-beverages').click(function(e) {
+            // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+            data.element.attr({
+                'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+            });
 
-  var Segments = Chart.getSegmentsAtEvent(e);
-  featureList.filter(function(item) {
+            // Create animation definition while also assigning an ID to the animation for later sync usage
+            var animationDefinition = {
+                'stroke-dashoffset': {
+                    id: 'anim' + data.index,
+                    dur: 1200,
+                    from: -pathLength + 'px',
+                    to:  '0px',
+                    easing: Chartist.Svg.Easing.easeOutQuint,
+                    fill: 'freeze'
+                }
+            };
 
-    if (item.values().category == Segments[0].label) {
+            // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+            data.element.attr({
+                'stroke-dashoffset': -pathLength + 'px'
+            });
 
-      return true;
+            // We can't use guided mode as the animations need to rely on setting begin manually
 
-    } else {
+            data.element.animate(animationDefinition, true);
+        }
+    });
 
-      return false;
-    }
-  });
-  return false;
+    var chart = new Chartist.Pie('#ct-chart3',
+        {
+          series: [8, 50 ],
+          labels: ['', '']
+      }, {
+          donut: true,
+          donutWidth: 40,
+          startAngle: 300,
+          total: 200,
+            showLabel: false,
+            plugins: [
+                Chartist.plugins.fillDonut({
+                    items: [{
+                        content: '',
+                        position: 'bottom',
+                        offsetY : 10,
+                        offsetX: -2
+                    }, {
+                        content: '<div style="display:flex; flex-direction:column;"><h5>Herbs</h5><div id="Herb"><h5>10<span class="small">%</span></h5></div>'
+                    }]
+                })
+            ],
+        });
+
+    chart.on('draw', function(data) {
+        if(data.type === 'slice' && data.index == 0) {
+            // Get the total path length in order to use for dash array animation
+            var pathLength = data.element._node.getTotalLength();
+
+            // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+            data.element.attr({
+                'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+            });
+
+            // Create animation definition while also assigning an ID to the animation for later sync usage
+            var animationDefinition = {
+                'stroke-dashoffset': {
+                    id: 'anim' + data.index,
+                    dur: 1200,
+                    from: -pathLength + 'px',
+                    to:  '0px',
+                    easing: Chartist.Svg.Easing.easeOutQuint,
+                    fill: 'freeze'
+                }
+            };
+
+            // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+            data.element.attr({
+                'stroke-dashoffset': -pathLength + 'px'
+            });
+
+            // We can't use guided mode as the animations need to rely on setting begin manually
+
+            data.element.animate(animationDefinition, true);
+        }
+    });
+
+    var chart = new Chartist.Pie('#ct-chart4',
+        {
+          series: [8, 50 ],
+          labels: ['', '']
+      }, {
+          donut: true,
+          donutWidth: 40,
+          startAngle: 300,
+          total: 200,
+            showLabel: false,
+            plugins: [
+                Chartist.plugins.fillDonut({
+                    items: [{
+                        content: '',
+                        position: 'bottom',
+                        offsetY : 10,
+                        offsetX: -2
+                    }, {
+                        content: '<div style="display:flex; flex-direction:column;"><h5>Breads</h5><div id="Bread"><h5>10<span class="small">%</span></h5></div>'
+                    }]
+                })
+            ],
+        });
+
+    chart.on('draw', function(data) {
+        if(data.type === 'slice' && data.index == 0) {
+            // Get the total path length in order to use for dash array animation
+            var pathLength = data.element._node.getTotalLength();
+
+            // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+            data.element.attr({
+                'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+            });
+
+            // Create animation definition while also assigning an ID to the animation for later sync usage
+            var animationDefinition = {
+                'stroke-dashoffset': {
+                    id: 'anim' + data.index,
+                    dur: 1200,
+                    from: -pathLength + 'px',
+                    to:  '0px',
+                    easing: Chartist.Svg.Easing.easeOutQuint,
+                    fill: 'freeze'
+                }
+            };
+
+            // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+            data.element.attr({
+                'stroke-dashoffset': -pathLength + 'px'
+            });
+
+            // We can't use guided mode as the animations need to rely on setting begin manually
+
+            data.element.animate(animationDefinition, true);
+        }
+    });
+
+    var chart = new Chartist.Pie('#ct-chart5',
+        {
+          series: [10, 50 ],
+          labels: ['', '']
+      }, {
+          donut: true,
+          donutWidth: 40,
+          startAngle: 300,
+          total: 200,
+            showLabel: false,
+            plugins: [
+                Chartist.plugins.fillDonut({
+                    items: [{
+                        content: '',
+                        position: 'bottom',
+                        offsetY : 10,
+                        offsetX: -2
+                    }, {
+                        content: '<div style="display:flex; flex-direction:column;"><h5>Vegetables</h5><div id="Apple"><h5>15<span class="small">%</span></h5></div>'
+                    }]
+                })
+            ],
+        });
+
+    chart.on('draw', function(data) {
+        if(data.type === 'slice' && data.index == 0) {
+            // Get the total path length in order to use for dash array animation
+            var pathLength = data.element._node.getTotalLength();
+
+            // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+            data.element.attr({
+                'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+            });
+
+            // Create animation definition while also assigning an ID to the animation for later sync usage
+            var animationDefinition = {
+                'stroke-dashoffset': {
+                    id: 'anim' + data.index,
+                    dur: 1200,
+                    from: -pathLength + 'px',
+                    to:  '0px',
+                    easing: Chartist.Svg.Easing.easeOutQuint,
+                    fill: 'freeze'
+                }
+            };
+
+            // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+            data.element.attr({
+                'stroke-dashoffset': -pathLength + 'px'
+            });
+
+            // We can't use guided mode as the animations need to rely on setting begin manually
+
+            data.element.animate(animationDefinition, true);
+        }
+    });
+
+    var chart = new Chartist.Pie('#ct-chart6',
+        {
+          series: [10, 50 ],
+          labels: ['', '']
+      }, {
+          donut: true,
+          donutWidth: 40,
+          startAngle: 300,
+          total: 200,
+            showLabel: false,
+            plugins: [
+                Chartist.plugins.fillDonut({
+                    items: [{
+                        content: '',
+                        position: 'bottom',
+                        offsetY : 10,
+                        offsetX: -2
+                    }, {
+                        content: '<div style="display:flex; flex-direction:column;"><h5>Protein</h5><div id="Meat"><h5>15<span class="small">%</span></h5></div>'
+                    }]
+                })
+            ],
+        });
+
+    chart.on('draw', function(data) {
+        if(data.type === 'slice' && data.index == 0) {
+            // Get the total path length in order to use for dash array animation
+            var pathLength = data.element._node.getTotalLength();
+
+            // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+            data.element.attr({
+                'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+            });
+
+            // Create animation definition while also assigning an ID to the animation for later sync usage
+            var animationDefinition = {
+                'stroke-dashoffset': {
+                    id: 'anim' + data.index,
+                    dur: 1200,
+                    from: -pathLength + 'px',
+                    to:  '0px',
+                    easing: Chartist.Svg.Easing.easeOutQuint,
+                    fill: 'freeze'
+                }
+            };
+
+            // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+            data.element.attr({
+                'stroke-dashoffset': -pathLength + 'px'
+            });
+
+            // We can't use guided mode as the animations need to rely on setting begin manually
+
+            data.element.animate(animationDefinition, true);
+        }
+    });
+    var chart = new Chartist.Pie('#ct-chart7',
+        {
+          series: [8, 50 ],
+          labels: ['', '']
+      }, {
+          donut: true,
+          donutWidth: 40,
+          startAngle: 300,
+          total: 200,
+            showLabel: false,
+            plugins: [
+                Chartist.plugins.fillDonut({
+                    items: [{
+                        content: '',
+                        position: 'bottom',
+                        offsetY : 10,
+                        offsetX: -2
+                    }, {
+                        content: '<div style="display:flex; flex-direction:column;"><h5>Condiments</h5><div id="Sauce"><h5>10<span class="small">%</span></h5></div>'
+                    }]
+                })
+            ],
+        });
+
+    chart.on('draw', function(data) {
+        if(data.type === 'slice' && data.index == 0) {
+            // Get the total path length in order to use for dash array animation
+            var pathLength = data.element._node.getTotalLength();
+
+            // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+            data.element.attr({
+                'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+            });
+
+            // Create animation definition while also assigning an ID to the animation for later sync usage
+            var animationDefinition = {
+                'stroke-dashoffset': {
+                    id: 'anim' + data.index,
+                    dur: 1200,
+                    from: -pathLength + 'px',
+                    to:  '0px',
+                    easing: Chartist.Svg.Easing.easeOutQuint,
+                    fill: 'freeze'
+                }
+            };
+
+            // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+            data.element.attr({
+                'stroke-dashoffset': -pathLength + 'px'
+            });
+
+            // We can't use guided mode as the animations need to rely on setting begin manually
+
+            data.element.animate(animationDefinition, true);
+        }
+    });
+
+$("#Icon1").click(function(){
+
+  $("#foods").css("display", "flex");
+  $("#foods").html("<h2>Fruits</h2><hr/><ul><li>2 Containers of Strawberries</li><li>2 Pecks of Apples</li><li>1 Watermelon</li><li>4 Oranges</li><li>2 Cucumbers</li></ul>");
+  $(".Content").addClass("Content2");
+  $("#Icon1").addClass("BigIconSmall");
+
+  $("#Icon2").removeClass("BigIconSmall");
+  $("#Icon3").removeClass("BigIconSmall");
+  $("#Icon4").removeClass("BigIconSmall");
+  $("#Icon5").removeClass("BigIconSmall");
+  $("#Icon6").removeClass("BigIconSmall");
+  $("#Icon7").removeClass("BigIconSmall");
+
+  $("#Icon2").addClass("IconSmall");
+  $("#Icon3").addClass("IconSmall");
+  $("#Icon4").addClass("IconSmall");
+  $("#Icon5").addClass("IconSmall");
+  $("#Icon6").addClass("IconSmall");
+  $("#Icon7").addClass("IconSmall");
+
+  var chart = new Chartist.Pie('#ct-chart1',
+      {
+        series: [10, 50 ],
+        labels: ['', '']
+    }, {
+        donut: true,
+        donutWidth: 30,
+        startAngle: 300,
+        total: 200,
+          showLabel: false,
+          plugins: [
+              Chartist.plugins.fillDonut({
+                  items: [{
+                      content: '',
+                      position: 'bottom',
+                      offsetY : 10,
+                      offsetX: -2
+                  }, {
+                      content: '<h5 style="font-size: 2em;">Fruits</h5><div id="Apple"><h5 style="font-size: 2em;">15<span class="small">%</span></h5></div>'
+                  }]
+              })
+          ],
+      });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+
+      var chart = new Chartist.Pie('#ct-chart2',
+          {
+            series: [15, 50 ],
+            labels: ['', '']
+        }, {
+            donut: true,
+            donutWidth: 30,
+            startAngle: 300,
+            total: 200,
+              showLabel: false,
+              plugins: [
+                  Chartist.plugins.fillDonut({
+                      items: [{
+                          content: '',
+                          position: 'bottom',
+                          offsetY : 10,
+                          offsetX: -2
+                      }, {
+                          content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Dairy</h5><div id="Milk"><h5 style="font-size: 1.5em;">25<span class="small">%</span></h5></div>'
+                      }]
+                  })
+              ],
+          });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+
+      var chart = new Chartist.Pie('#ct-chart3',
+          {
+            series: [8, 50 ],
+            labels: ['', '']
+        }, {
+            donut: true,
+            donutWidth: 30,
+            startAngle: 300,
+            total: 200,
+              showLabel: false,
+              plugins: [
+                  Chartist.plugins.fillDonut({
+                      items: [{
+                          content: '',
+                          position: 'bottom',
+                          offsetY : 10,
+                          offsetX: -2
+                      }, {
+                          content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Herbs</h5><div id="Herb"><h5 style="font-size: 1.5em;">10<span class="small">%</span></h5></div>'
+                      }]
+                  })
+              ],
+          });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+
+      var chart = new Chartist.Pie('#ct-chart4',
+          {
+            series: [8, 50 ],
+            labels: ['', '']
+        }, {
+            donut: true,
+            donutWidth: 30,
+            startAngle: 300,
+            total: 200,
+              showLabel: false,
+              plugins: [
+                  Chartist.plugins.fillDonut({
+                      items: [{
+                          content: '',
+                          position: 'bottom',
+                          offsetY : 10,
+                          offsetX: -2
+                      }, {
+                          content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Breads</h5><div id="Bread"><h5 style="font-size: 1.5em;">10<span class="small">%</span></h5></div>'
+                      }]
+                  })
+              ],
+          });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+
+      var chart = new Chartist.Pie('#ct-chart5',
+          {
+            series: [10, 50 ],
+            labels: ['', '']
+        }, {
+            donut: true,
+            donutWidth: 30,
+            startAngle: 300,
+            total: 200,
+              showLabel: false,
+              plugins: [
+                  Chartist.plugins.fillDonut({
+                      items: [{
+                          content: '',
+                          position: 'bottom',
+                          offsetY : 10,
+                          offsetX: -2
+                      }, {
+                          content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Vegetables</h5><div id="Apple"><h5 style="font-size: 1.5em;">15<span class="small">%</span></h5></div>'
+                      }]
+                  })
+              ],
+          });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+
+      var chart = new Chartist.Pie('#ct-chart6',
+          {
+            series: [10, 50 ],
+            labels: ['', '']
+        }, {
+            donut: true,
+            donutWidth: 30,
+            startAngle: 300,
+            total: 200,
+              showLabel: false,
+              plugins: [
+                  Chartist.plugins.fillDonut({
+                      items: [{
+                          content: '',
+                          position: 'bottom',
+                          offsetY : 10,
+                          offsetX: -2
+                      }, {
+                          content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Protein</h5><div id="Meat"><h5 style="font-size: 1.5em;">15<span class="small">%</span></h5></div>'
+                      }]
+                  })
+              ],
+          });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+      var chart = new Chartist.Pie('#ct-chart7',
+          {
+            series: [8, 50 ],
+            labels: ['', '']
+        }, {
+            donut: true,
+            donutWidth: 30,
+            startAngle: 300,
+            total: 200,
+              showLabel: false,
+              plugins: [
+                  Chartist.plugins.fillDonut({
+                      items: [{
+                          content: '',
+                          position: 'bottom',
+                          offsetY : 10,
+                          offsetX: -2
+                      }, {
+                          content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Condiments</h5><div id="Sauce"><h5 style="font-size: 1.5em;">10<span class="small">%</span></h5></div>'
+                      }]
+                  })
+              ],
+          });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+
+  $(".Icons-Container").addClass("ChartContainer2");
 });
 
-var options = {
-  valueNames: [ 'Dairy', 'born' ]
-};
+$("#Icon2").click(function(){
 
-var userList = new List('foods', options);
+    $("#foods").css("display", "flex");
+  $("#foods").html("<h2>Dairy</h2><hr/><ul><li>2 Gallons of Milk</li><li>1 Container of Sour Cream</li><li>1 Stick of Butter</li><li>4 Containers of Yogurt</li><li>1 Pound of Cheese</li></ul>");
+    $(".Content").addClass("Content2");
+    $("#Icon2").addClass("BigIconSmall");
+
+    $("#Icon1").removeClass("BigIconSmall");
+    $("#Icon3").removeClass("BigIconSmall");
+    $("#Icon4").removeClass("BigIconSmall");
+    $("#Icon5").removeClass("BigIconSmall");
+    $("#Icon6").removeClass("BigIconSmall");
+    $("#Icon7").removeClass("BigIconSmall");
+
+    $("#Icon1").addClass("IconSmall");
+    $("#Icon3").addClass("IconSmall");
+    $("#Icon4").addClass("IconSmall");
+    $("#Icon5").addClass("IconSmall");
+    $("#Icon6").addClass("IconSmall");
+    $("#Icon7").addClass("IconSmall");
+
+        var chart = new Chartist.Pie('#ct-chart2',
+            {
+              series: [15, 50 ],
+              labels: ['', '']
+          }, {
+              donut: true,
+              donutWidth: 30,
+              startAngle: 300,
+              total: 200,
+                showLabel: false,
+                plugins: [
+                    Chartist.plugins.fillDonut({
+                        items: [{
+                            content: '',
+                            position: 'bottom',
+                            offsetY : 10,
+                            offsetX: -2
+                        }, {
+                            content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 2em;">Dairy</h5><div id="Milk"><h5 style="font-size: 2em;">25<span class="small">%</span></h5></div>'
+                        }]
+                    })
+                ],
+            });
+
+        chart.on('draw', function(data) {
+            if(data.type === 'slice' && data.index == 0) {
+                // Get the total path length in order to use for dash array animation
+                var pathLength = data.element._node.getTotalLength();
+
+                // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+                data.element.attr({
+                    'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+                });
+
+                // Create animation definition while also assigning an ID to the animation for later sync usage
+                var animationDefinition = {
+                    'stroke-dashoffset': {
+                        id: 'anim' + data.index,
+                        dur: 1200,
+                        from: -pathLength + 'px',
+                        to:  '0px',
+                        easing: Chartist.Svg.Easing.easeOutQuint,
+                        fill: 'freeze'
+                    }
+                };
+
+                // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+                data.element.attr({
+                    'stroke-dashoffset': -pathLength + 'px'
+                });
+
+                // We can't use guided mode as the animations need to rely on setting begin manually
+
+                data.element.animate(animationDefinition, true);
+            }
+        });
+
+        var chart = new Chartist.Pie('#ct-chart1',
+            {
+              series: [10, 50 ],
+              labels: ['', '']
+          }, {
+              donut: true,
+              donutWidth: 30,
+              startAngle: 300,
+              total: 200,
+                showLabel: false,
+                plugins: [
+                    Chartist.plugins.fillDonut({
+                        items: [{
+                            content: '',
+                            position: 'bottom',
+                            offsetY : 10,
+                            offsetX: -2
+                        }, {
+                            content: '<h5 style="font-size: 1.5em;">Fruits</h5><div id="Apple"><h5 style="font-size: 1.5em;">15<span class="small">%</span></h5></div>'
+                        }]
+                    })
+                ],
+            });
+
+            chart.on('draw', function(data) {
+                if(data.type === 'slice' && data.index == 0) {
+                    // Get the total path length in order to use for dash array animation
+                    var pathLength = data.element._node.getTotalLength();
+
+                    // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+                    data.element.attr({
+                        'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+                    });
+
+                    // Create animation definition while also assigning an ID to the animation for later sync usage
+                    var animationDefinition = {
+                        'stroke-dashoffset': {
+                            id: 'anim' + data.index,
+                            dur: 1200,
+                            from: -pathLength + 'px',
+                            to:  '0px',
+                            easing: Chartist.Svg.Easing.easeOutQuint,
+                            fill: 'freeze'
+                        }
+                    };
+
+                    // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+                    data.element.attr({
+                        'stroke-dashoffset': -pathLength + 'px'
+                    });
+
+                    // We can't use guided mode as the animations need to rely on setting begin manually
+
+                    data.element.animate(animationDefinition, true);
+                }
+            });
+
+            var chart = new Chartist.Pie('#ct-chart3',
+                {
+                  series: [8, 50 ],
+                  labels: ['', '']
+              }, {
+                  donut: true,
+                  donutWidth: 30,
+                  startAngle: 300,
+                  total: 200,
+                    showLabel: false,
+                    plugins: [
+                        Chartist.plugins.fillDonut({
+                            items: [{
+                                content: '',
+                                position: 'bottom',
+                                offsetY : 10,
+                                offsetX: -2
+                            }, {
+                                content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Herbs</h5><div id="Herb"><h5 style="font-size: 1.5em;">10<span class="small">%</span></h5></div>'
+                            }]
+                        })
+                    ],
+                });
+
+            chart.on('draw', function(data) {
+                if(data.type === 'slice' && data.index == 0) {
+                    // Get the total path length in order to use for dash array animation
+                    var pathLength = data.element._node.getTotalLength();
+
+                    // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+                    data.element.attr({
+                        'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+                    });
+
+                    // Create animation definition while also assigning an ID to the animation for later sync usage
+                    var animationDefinition = {
+                        'stroke-dashoffset': {
+                            id: 'anim' + data.index,
+                            dur: 1200,
+                            from: -pathLength + 'px',
+                            to:  '0px',
+                            easing: Chartist.Svg.Easing.easeOutQuint,
+                            fill: 'freeze'
+                        }
+                    };
+
+                    // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+                    data.element.attr({
+                        'stroke-dashoffset': -pathLength + 'px'
+                    });
+
+                    // We can't use guided mode as the animations need to rely on setting begin manually
+
+                    data.element.animate(animationDefinition, true);
+                }
+            });
+
+            var chart = new Chartist.Pie('#ct-chart4',
+                {
+                  series: [8, 50 ],
+                  labels: ['', '']
+              }, {
+                  donut: true,
+                  donutWidth: 30,
+                  startAngle: 300,
+                  total: 200,
+                    showLabel: false,
+                    plugins: [
+                        Chartist.plugins.fillDonut({
+                            items: [{
+                                content: '',
+                                position: 'bottom',
+                                offsetY : 10,
+                                offsetX: -2
+                            }, {
+                                content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Breads</h5><div id="Bread"><h5 style="font-size: 1.5em;">10<span class="small">%</span></h5></div>'
+                            }]
+                        })
+                    ],
+                });
+
+            chart.on('draw', function(data) {
+                if(data.type === 'slice' && data.index == 0) {
+                    // Get the total path length in order to use for dash array animation
+                    var pathLength = data.element._node.getTotalLength();
+
+                    // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+                    data.element.attr({
+                        'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+                    });
+
+                    // Create animation definition while also assigning an ID to the animation for later sync usage
+                    var animationDefinition = {
+                        'stroke-dashoffset': {
+                            id: 'anim' + data.index,
+                            dur: 1200,
+                            from: -pathLength + 'px',
+                            to:  '0px',
+                            easing: Chartist.Svg.Easing.easeOutQuint,
+                            fill: 'freeze'
+                        }
+                    };
+
+                    // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+                    data.element.attr({
+                        'stroke-dashoffset': -pathLength + 'px'
+                    });
+
+                    // We can't use guided mode as the animations need to rely on setting begin manually
+
+                    data.element.animate(animationDefinition, true);
+                }
+            });
+
+            var chart = new Chartist.Pie('#ct-chart5',
+                {
+                  series: [10, 50 ],
+                  labels: ['', '']
+              }, {
+                  donut: true,
+                  donutWidth: 30,
+                  startAngle: 300,
+                  total: 200,
+                    showLabel: false,
+                    plugins: [
+                        Chartist.plugins.fillDonut({
+                            items: [{
+                                content: '',
+                                position: 'bottom',
+                                offsetY : 10,
+                                offsetX: -2
+                            }, {
+                                content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Vegetables</h5><div id="Apple"><h5 style="font-size: 1.5em;">15<span class="small">%</span></h5></div>'
+                            }]
+                        })
+                    ],
+                });
+
+            chart.on('draw', function(data) {
+                if(data.type === 'slice' && data.index == 0) {
+                    // Get the total path length in order to use for dash array animation
+                    var pathLength = data.element._node.getTotalLength();
+
+                    // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+                    data.element.attr({
+                        'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+                    });
+
+                    // Create animation definition while also assigning an ID to the animation for later sync usage
+                    var animationDefinition = {
+                        'stroke-dashoffset': {
+                            id: 'anim' + data.index,
+                            dur: 1200,
+                            from: -pathLength + 'px',
+                            to:  '0px',
+                            easing: Chartist.Svg.Easing.easeOutQuint,
+                            fill: 'freeze'
+                        }
+                    };
+
+                    // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+                    data.element.attr({
+                        'stroke-dashoffset': -pathLength + 'px'
+                    });
+
+                    // We can't use guided mode as the animations need to rely on setting begin manually
+
+                    data.element.animate(animationDefinition, true);
+                }
+            });
+
+            var chart = new Chartist.Pie('#ct-chart6',
+                {
+                  series: [10, 50 ],
+                  labels: ['', '']
+              }, {
+                  donut: true,
+                  donutWidth: 30,
+                  startAngle: 300,
+                  total: 200,
+                    showLabel: false,
+                    plugins: [
+                        Chartist.plugins.fillDonut({
+                            items: [{
+                                content: '',
+                                position: 'bottom',
+                                offsetY : 10,
+                                offsetX: -2
+                            }, {
+                                content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Protein</h5><div id="Meat"><h5 style="font-size: 1.5em;">15<span class="small">%</span></h5></div>'
+                            }]
+                        })
+                    ],
+                });
+
+            chart.on('draw', function(data) {
+                if(data.type === 'slice' && data.index == 0) {
+                    // Get the total path length in order to use for dash array animation
+                    var pathLength = data.element._node.getTotalLength();
+
+                    // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+                    data.element.attr({
+                        'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+                    });
+
+                    // Create animation definition while also assigning an ID to the animation for later sync usage
+                    var animationDefinition = {
+                        'stroke-dashoffset': {
+                            id: 'anim' + data.index,
+                            dur: 1200,
+                            from: -pathLength + 'px',
+                            to:  '0px',
+                            easing: Chartist.Svg.Easing.easeOutQuint,
+                            fill: 'freeze'
+                        }
+                    };
+
+                    // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+                    data.element.attr({
+                        'stroke-dashoffset': -pathLength + 'px'
+                    });
+
+                    // We can't use guided mode as the animations need to rely on setting begin manually
+
+                    data.element.animate(animationDefinition, true);
+                }
+            });
+            var chart = new Chartist.Pie('#ct-chart7',
+                {
+                  series: [8, 50 ],
+                  labels: ['', '']
+              }, {
+                  donut: true,
+                  donutWidth: 30,
+                  startAngle: 300,
+                  total: 200,
+                    showLabel: false,
+                    plugins: [
+                        Chartist.plugins.fillDonut({
+                            items: [{
+                                content: '',
+                                position: 'bottom',
+                                offsetY : 10,
+                                offsetX: -2
+                            }, {
+                                content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Condiments</h5><div id="Sauce"><h5 style="font-size: 1.5em;">10<span class="small">%</span></h5></div>'
+                            }]
+                        })
+                    ],
+                });
+
+            chart.on('draw', function(data) {
+                if(data.type === 'slice' && data.index == 0) {
+                    // Get the total path length in order to use for dash array animation
+                    var pathLength = data.element._node.getTotalLength();
+
+                    // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+                    data.element.attr({
+                        'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+                    });
+
+                    // Create animation definition while also assigning an ID to the animation for later sync usage
+                    var animationDefinition = {
+                        'stroke-dashoffset': {
+                            id: 'anim' + data.index,
+                            dur: 1200,
+                            from: -pathLength + 'px',
+                            to:  '0px',
+                            easing: Chartist.Svg.Easing.easeOutQuint,
+                            fill: 'freeze'
+                        }
+                    };
+
+                    // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+                    data.element.attr({
+                        'stroke-dashoffset': -pathLength + 'px'
+                    });
+
+                    // We can't use guided mode as the animations need to rely on setting begin manually
+
+                    data.element.animate(animationDefinition, true);
+                }
+            });
+
+        $(".Icons-Container").addClass("ChartContainer2");
+  });
+
+$("#Icon3").click(function(){
+
+  $("#foods").css("display", "flex");
+ $("#foods").html("<h2>Herbs</h2><hr/><ul><li>1 Cup of Cilantro</li><li>1 Cup of Parsley</li><li>1 Cup of Chives</li><li>1 Cup of Sage</li></ul>");
+  $(".Content").addClass("Content2");
+  $("#Icon3").addClass("BigIconSmall");
+  $("#Icon2").addClass("IconSmall");
+  $("#Icon3").addClass("IconSmall");
+  $("#Icon4").addClass("IconSmall");
+  $("#Icon5").addClass("IconSmall");
+  $("#Icon6").addClass("IconSmall");
+  $("#Icon7").addClass("IconSmall");
+
+  $("#Icon1").removeClass("BigIconSmall");
+  $("#Icon2").removeClass("BigIconSmall");
+  $("#Icon4").removeClass("BigIconSmall");
+  $("#Icon5").removeClass("BigIconSmall");
+  $("#Icon6").removeClass("BigIconSmall");
+  $("#Icon7").removeClass("BigIconSmall");
+
+  var chart = new Chartist.Pie('#ct-chart1',
+      {
+        series: [10, 50 ],
+        labels: ['', '']
+    }, {
+        donut: true,
+        donutWidth: 30,
+        startAngle: 300,
+        total: 200,
+          showLabel: false,
+          plugins: [
+              Chartist.plugins.fillDonut({
+                  items: [{
+                      content: '',
+                      position: 'bottom',
+                      offsetY : 10,
+                      offsetX: -2
+                  }, {
+                      content: '<h5 style="font-size: 1.5em;">Fruits</h5><div id="Apple"><h5 style="font-size: 1.5em;">15<span class="small">%</span></h5></div>'
+                  }]
+              })
+          ],
+      });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+
+      var chart = new Chartist.Pie('#ct-chart2',
+          {
+            series: [15, 50 ],
+            labels: ['', '']
+        }, {
+            donut: true,
+            donutWidth: 30,
+            startAngle: 300,
+            total: 200,
+              showLabel: false,
+              plugins: [
+                  Chartist.plugins.fillDonut({
+                      items: [{
+                          content: '',
+                          position: 'bottom',
+                          offsetY : 10,
+                          offsetX: -2
+                      }, {
+                          content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Dairy</h5><div id="Milk"><h5 style="font-size: 1.5em;">25<span class="small">%</span></h5></div>'
+                      }]
+                  })
+              ],
+          });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+
+      var chart = new Chartist.Pie('#ct-chart3',
+          {
+            series: [8, 50 ],
+            labels: ['', '']
+        }, {
+            donut: true,
+            donutWidth: 30,
+            startAngle: 300,
+            total: 200,
+              showLabel: false,
+              plugins: [
+                  Chartist.plugins.fillDonut({
+                      items: [{
+                          content: '',
+                          position: 'bottom',
+                          offsetY : 10,
+                          offsetX: -2
+                      }, {
+                          content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 2em;">Herbs</h5><div id="Herb"><h5 style="font-size: 2em;">10<span class="small">%</span></h5></div>'
+                      }]
+                  })
+              ],
+          });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+
+      var chart = new Chartist.Pie('#ct-chart4',
+          {
+            series: [8, 50 ],
+            labels: ['', '']
+        }, {
+            donut: true,
+            donutWidth: 30,
+            startAngle: 300,
+            total: 200,
+              showLabel: false,
+              plugins: [
+                  Chartist.plugins.fillDonut({
+                      items: [{
+                          content: '',
+                          position: 'bottom',
+                          offsetY : 10,
+                          offsetX: -2
+                      }, {
+                          content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Breads</h5><div id="Bread"><h5 style="font-size: 1.5em;">10<span class="small">%</span></h5></div>'
+                      }]
+                  })
+              ],
+          });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+
+      var chart = new Chartist.Pie('#ct-chart5',
+          {
+            series: [10, 50 ],
+            labels: ['', '']
+        }, {
+            donut: true,
+            donutWidth: 30,
+            startAngle: 300,
+            total: 200,
+              showLabel: false,
+              plugins: [
+                  Chartist.plugins.fillDonut({
+                      items: [{
+                          content: '',
+                          position: 'bottom',
+                          offsetY : 10,
+                          offsetX: -2
+                      }, {
+                          content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Vegetables</h5><div id="Apple"><h5 style="font-size: 1.5em;">15<span class="small">%</span></h5></div>'
+                      }]
+                  })
+              ],
+          });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+
+      var chart = new Chartist.Pie('#ct-chart6',
+          {
+            series: [10, 50 ],
+            labels: ['', '']
+        }, {
+            donut: true,
+            donutWidth: 30,
+            startAngle: 300,
+            total: 200,
+              showLabel: false,
+              plugins: [
+                  Chartist.plugins.fillDonut({
+                      items: [{
+                          content: '',
+                          position: 'bottom',
+                          offsetY : 10,
+                          offsetX: -2
+                      }, {
+                          content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Protein</h5><div id="Meat"><h5 style="font-size: 1.5em;">15<span class="small">%</span></h5></div>'
+                      }]
+                  })
+              ],
+          });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+      var chart = new Chartist.Pie('#ct-chart7',
+          {
+            series: [8, 50 ],
+            labels: ['', '']
+        }, {
+            donut: true,
+            donutWidth: 30,
+            startAngle: 300,
+            total: 200,
+              showLabel: false,
+              plugins: [
+                  Chartist.plugins.fillDonut({
+                      items: [{
+                          content: '',
+                          position: 'bottom',
+                          offsetY : 10,
+                          offsetX: -2
+                      }, {
+                          content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Condiments</h5><div id="Sauce"><h5 style="font-size: 1.5em;">10<span class="small">%</span></h5></div>'
+                      }]
+                  })
+              ],
+          });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+  $(".Icons-Container").addClass("ChartContainer2");
+});
+
+$("#Icon4").click(function(){
+
+  $("#foods").css("display", "flex");
+     $("#foods").html("<h2>Breads</h2><hr/><ul><li>2 Rolls of Biscuit Dough</li><li>1 Pre-baked Pizza Crust</li><li>1 Container of Cookie Dough</li><li>2 Rolls of Crescent Dough</li><li>1 Package of Buns</li></ul>");
+  $(".Content").addClass("Content2");
+  $("#Icon4").addClass("BigIconSmall");
+  $("#Icon2").addClass("IconSmall");
+  $("#Icon3").addClass("IconSmall");
+  $("#Icon1").addClass("IconSmall");
+  $("#Icon5").addClass("IconSmall");
+  $("#Icon6").addClass("IconSmall");
+  $("#Icon7").addClass("IconSmall");
+
+  $("#Icon1").removeClass("BigIconSmall");
+  $("#Icon2").removeClass("BigIconSmall");
+  $("#Icon3").removeClass("BigIconSmall");
+  $("#Icon5").removeClass("BigIconSmall");
+  $("#Icon6").removeClass("BigIconSmall");
+  $("#Icon7").removeClass("BigIconSmall");
+
+    var chart = new Chartist.Pie('#ct-chart1',
+        {
+          series: [10, 50 ],
+          labels: ['', '']
+      }, {
+          donut: true,
+          donutWidth: 30,
+          startAngle: 300,
+          total: 200,
+            showLabel: false,
+            plugins: [
+                Chartist.plugins.fillDonut({
+                    items: [{
+                        content: '',
+                        position: 'bottom',
+                        offsetY : 10,
+                        offsetX: -2
+                    }, {
+                        content: '<h5 style="font-size: 1.5em;">Fruits</h5><div id="Apple"><h5 style="font-size: 1.5em;">15<span class="small">%</span></h5></div>'
+                    }]
+                })
+            ],
+        });
+
+        chart.on('draw', function(data) {
+            if(data.type === 'slice' && data.index == 0) {
+                // Get the total path length in order to use for dash array animation
+                var pathLength = data.element._node.getTotalLength();
+
+                // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+                data.element.attr({
+                    'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+                });
+
+                // Create animation definition while also assigning an ID to the animation for later sync usage
+                var animationDefinition = {
+                    'stroke-dashoffset': {
+                        id: 'anim' + data.index,
+                        dur: 1200,
+                        from: -pathLength + 'px',
+                        to:  '0px',
+                        easing: Chartist.Svg.Easing.easeOutQuint,
+                        fill: 'freeze'
+                    }
+                };
+
+                // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+                data.element.attr({
+                    'stroke-dashoffset': -pathLength + 'px'
+                });
+
+                // We can't use guided mode as the animations need to rely on setting begin manually
+
+                data.element.animate(animationDefinition, true);
+            }
+        });
+
+        var chart = new Chartist.Pie('#ct-chart2',
+            {
+              series: [15, 50 ],
+              labels: ['', '']
+          }, {
+              donut: true,
+              donutWidth: 30,
+              startAngle: 300,
+              total: 200,
+                showLabel: false,
+                plugins: [
+                    Chartist.plugins.fillDonut({
+                        items: [{
+                            content: '',
+                            position: 'bottom',
+                            offsetY : 10,
+                            offsetX: -2
+                        }, {
+                            content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Dairy</h5><div id="Milk"><h5 style="font-size: 1.5em;">25<span class="small">%</span></h5></div>'
+                        }]
+                    })
+                ],
+            });
+
+        chart.on('draw', function(data) {
+            if(data.type === 'slice' && data.index == 0) {
+                // Get the total path length in order to use for dash array animation
+                var pathLength = data.element._node.getTotalLength();
+
+                // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+                data.element.attr({
+                    'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+                });
+
+                // Create animation definition while also assigning an ID to the animation for later sync usage
+                var animationDefinition = {
+                    'stroke-dashoffset': {
+                        id: 'anim' + data.index,
+                        dur: 1200,
+                        from: -pathLength + 'px',
+                        to:  '0px',
+                        easing: Chartist.Svg.Easing.easeOutQuint,
+                        fill: 'freeze'
+                    }
+                };
+
+                // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+                data.element.attr({
+                    'stroke-dashoffset': -pathLength + 'px'
+                });
+
+                // We can't use guided mode as the animations need to rely on setting begin manually
+
+                data.element.animate(animationDefinition, true);
+            }
+        });
+
+        var chart = new Chartist.Pie('#ct-chart3',
+            {
+              series: [8, 50 ],
+              labels: ['', '']
+          }, {
+              donut: true,
+              donutWidth: 30,
+              startAngle: 300,
+              total: 200,
+                showLabel: false,
+                plugins: [
+                    Chartist.plugins.fillDonut({
+                        items: [{
+                            content: '',
+                            position: 'bottom',
+                            offsetY : 10,
+                            offsetX: -2
+                        }, {
+                            content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Herbs</h5><div id="Herb"><h5 style="font-size: 1.5em;">10<span class="small">%</span></h5></div>'
+                        }]
+                    })
+                ],
+            });
+
+        chart.on('draw', function(data) {
+            if(data.type === 'slice' && data.index == 0) {
+                // Get the total path length in order to use for dash array animation
+                var pathLength = data.element._node.getTotalLength();
+
+                // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+                data.element.attr({
+                    'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+                });
+
+                // Create animation definition while also assigning an ID to the animation for later sync usage
+                var animationDefinition = {
+                    'stroke-dashoffset': {
+                        id: 'anim' + data.index,
+                        dur: 1200,
+                        from: -pathLength + 'px',
+                        to:  '0px',
+                        easing: Chartist.Svg.Easing.easeOutQuint,
+                        fill: 'freeze'
+                    }
+                };
+
+                // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+                data.element.attr({
+                    'stroke-dashoffset': -pathLength + 'px'
+                });
+
+                // We can't use guided mode as the animations need to rely on setting begin manually
+
+                data.element.animate(animationDefinition, true);
+            }
+        });
+
+        var chart = new Chartist.Pie('#ct-chart4',
+            {
+              series: [8, 50 ],
+              labels: ['', '']
+          }, {
+              donut: true,
+              donutWidth: 30,
+              startAngle: 300,
+              total: 200,
+                showLabel: false,
+                plugins: [
+                    Chartist.plugins.fillDonut({
+                        items: [{
+                            content: '',
+                            position: 'bottom',
+                            offsetY : 10,
+                            offsetX: -2
+                        }, {
+                            content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 2em;">Breads</h5><div id="Bread"><h5 style="font-size: 2em;">10<span class="small">%</span></h5></div>'
+                        }]
+                    })
+                ],
+            });
+
+        chart.on('draw', function(data) {
+            if(data.type === 'slice' && data.index == 0) {
+                // Get the total path length in order to use for dash array animation
+                var pathLength = data.element._node.getTotalLength();
+
+                // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+                data.element.attr({
+                    'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+                });
+
+                // Create animation definition while also assigning an ID to the animation for later sync usage
+                var animationDefinition = {
+                    'stroke-dashoffset': {
+                        id: 'anim' + data.index,
+                        dur: 1200,
+                        from: -pathLength + 'px',
+                        to:  '0px',
+                        easing: Chartist.Svg.Easing.easeOutQuint,
+                        fill: 'freeze'
+                    }
+                };
+
+                // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+                data.element.attr({
+                    'stroke-dashoffset': -pathLength + 'px'
+                });
+
+                // We can't use guided mode as the animations need to rely on setting begin manually
+
+                data.element.animate(animationDefinition, true);
+            }
+        });
+
+        var chart = new Chartist.Pie('#ct-chart5',
+            {
+              series: [10, 50 ],
+              labels: ['', '']
+          }, {
+              donut: true,
+              donutWidth: 30,
+              startAngle: 300,
+              total: 200,
+                showLabel: false,
+                plugins: [
+                    Chartist.plugins.fillDonut({
+                        items: [{
+                            content: '',
+                            position: 'bottom',
+                            offsetY : 10,
+                            offsetX: -2
+                        }, {
+                            content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Vegetables</h5><div id="Apple"><h5 style="font-size: 1.5em;">15<span class="small">%</span></h5></div>'
+                        }]
+                    })
+                ],
+            });
+
+        chart.on('draw', function(data) {
+            if(data.type === 'slice' && data.index == 0) {
+                // Get the total path length in order to use for dash array animation
+                var pathLength = data.element._node.getTotalLength();
+
+                // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+                data.element.attr({
+                    'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+                });
+
+                // Create animation definition while also assigning an ID to the animation for later sync usage
+                var animationDefinition = {
+                    'stroke-dashoffset': {
+                        id: 'anim' + data.index,
+                        dur: 1200,
+                        from: -pathLength + 'px',
+                        to:  '0px',
+                        easing: Chartist.Svg.Easing.easeOutQuint,
+                        fill: 'freeze'
+                    }
+                };
+
+                // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+                data.element.attr({
+                    'stroke-dashoffset': -pathLength + 'px'
+                });
+
+                // We can't use guided mode as the animations need to rely on setting begin manually
+
+                data.element.animate(animationDefinition, true);
+            }
+        });
+
+        var chart = new Chartist.Pie('#ct-chart6',
+            {
+              series: [10, 50 ],
+              labels: ['', '']
+          }, {
+              donut: true,
+              donutWidth: 30,
+              startAngle: 300,
+              total: 200,
+                showLabel: false,
+                plugins: [
+                    Chartist.plugins.fillDonut({
+                        items: [{
+                            content: '',
+                            position: 'bottom',
+                            offsetY : 10,
+                            offsetX: -2
+                        }, {
+                            content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Protein</h5><div id="Meat"><h5 style="font-size: 1.5em;">15<span class="small">%</span></h5></div>'
+                        }]
+                    })
+                ],
+            });
+
+        chart.on('draw', function(data) {
+            if(data.type === 'slice' && data.index == 0) {
+                // Get the total path length in order to use for dash array animation
+                var pathLength = data.element._node.getTotalLength();
+
+                // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+                data.element.attr({
+                    'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+                });
+
+                // Create animation definition while also assigning an ID to the animation for later sync usage
+                var animationDefinition = {
+                    'stroke-dashoffset': {
+                        id: 'anim' + data.index,
+                        dur: 1200,
+                        from: -pathLength + 'px',
+                        to:  '0px',
+                        easing: Chartist.Svg.Easing.easeOutQuint,
+                        fill: 'freeze'
+                    }
+                };
+
+                // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+                data.element.attr({
+                    'stroke-dashoffset': -pathLength + 'px'
+                });
+
+                // We can't use guided mode as the animations need to rely on setting begin manually
+
+                data.element.animate(animationDefinition, true);
+            }
+        });
+        var chart = new Chartist.Pie('#ct-chart7',
+            {
+              series: [8, 50 ],
+              labels: ['', '']
+          }, {
+              donut: true,
+              donutWidth: 30,
+              startAngle: 300,
+              total: 200,
+                showLabel: false,
+                plugins: [
+                    Chartist.plugins.fillDonut({
+                        items: [{
+                            content: '',
+                            position: 'bottom',
+                            offsetY : 10,
+                            offsetX: -2
+                        }, {
+                            content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Condiments</h5><div id="Sauce"><h5 style="font-size: 1.5em;">10<span class="small">%</span></h5></div>'
+                        }]
+                    })
+                ],
+            });
+
+        chart.on('draw', function(data) {
+            if(data.type === 'slice' && data.index == 0) {
+                // Get the total path length in order to use for dash array animation
+                var pathLength = data.element._node.getTotalLength();
+
+                // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+                data.element.attr({
+                    'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+                });
+
+                // Create animation definition while also assigning an ID to the animation for later sync usage
+                var animationDefinition = {
+                    'stroke-dashoffset': {
+                        id: 'anim' + data.index,
+                        dur: 1200,
+                        from: -pathLength + 'px',
+                        to:  '0px',
+                        easing: Chartist.Svg.Easing.easeOutQuint,
+                        fill: 'freeze'
+                    }
+                };
+
+                // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+                data.element.attr({
+                    'stroke-dashoffset': -pathLength + 'px'
+                });
+
+                // We can't use guided mode as the animations need to rely on setting begin manually
+
+                data.element.animate(animationDefinition, true);
+            }
+        });
+
+    $(".Icons-Container").addClass("ChartContainer2");
+  });
+
+$("#Icon5").click(function(){
+
+  $("#foods").css("display", "flex");
+    $("#foods").html("<h2>Vegetables</h2><hr/><ul><li>2 Packages of Carrots</li><li>1 Stalk of Celery</li><li>3 Tomatoes</li><li>3 Red Peppers</li><li>1 Head of Lettuce</li><li>1 Onion</li></ul>");
+  $(".Content").addClass("Content2");
+  $("#Icon5").addClass("BigIconSmall");
+  $("#Icon2").addClass("IconSmall");
+  $("#Icon3").addClass("IconSmall");
+  $("#Icon1").addClass("IconSmall");
+  $("#Icon4").addClass("IconSmall");
+  $("#Icon6").addClass("IconSmall");
+  $("#Icon7").addClass("IconSmall");
+
+  $("#Icon1").removeClass("BigIconSmall");
+  $("#Icon2").removeClass("BigIconSmall");
+  $("#Icon3").removeClass("BigIconSmall");
+  $("#Icon4").removeClass("BigIconSmall");
+  $("#Icon6").removeClass("BigIconSmall");
+  $("#Icon7").removeClass("BigIconSmall");
+
+
+  var chart = new Chartist.Pie('#ct-chart2',
+      {
+        series: [15, 50 ],
+        labels: ['', '']
+    }, {
+        donut: true,
+        donutWidth: 30,
+        startAngle: 300,
+        total: 200,
+          showLabel: false,
+          plugins: [
+              Chartist.plugins.fillDonut({
+                  items: [{
+                      content: '',
+                      position: 'bottom',
+                      offsetY : 10,
+                      offsetX: -2
+                  }, {
+                      content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Dairy</h5><div id="Milk"><h5 style="font-size: 1.5em;">25<span class="small">%</span></h5></div>'
+                  }]
+              })
+          ],
+      });
+
+  chart.on('draw', function(data) {
+      if(data.type === 'slice' && data.index == 0) {
+          // Get the total path length in order to use for dash array animation
+          var pathLength = data.element._node.getTotalLength();
+
+          // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+          data.element.attr({
+              'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+          });
+
+          // Create animation definition while also assigning an ID to the animation for later sync usage
+          var animationDefinition = {
+              'stroke-dashoffset': {
+                  id: 'anim' + data.index,
+                  dur: 1200,
+                  from: -pathLength + 'px',
+                  to:  '0px',
+                  easing: Chartist.Svg.Easing.easeOutQuint,
+                  fill: 'freeze'
+              }
+          };
+
+          // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+          data.element.attr({
+              'stroke-dashoffset': -pathLength + 'px'
+          });
+
+          // We can't use guided mode as the animations need to rely on setting begin manually
+
+          data.element.animate(animationDefinition, true);
+      }
+  });
+
+  var chart = new Chartist.Pie('#ct-chart1',
+      {
+        series: [10, 50 ],
+        labels: ['', '']
+    }, {
+        donut: true,
+        donutWidth: 30,
+        startAngle: 300,
+        total: 200,
+          showLabel: false,
+          plugins: [
+              Chartist.plugins.fillDonut({
+                  items: [{
+                      content: '',
+                      position: 'bottom',
+                      offsetY : 10,
+                      offsetX: -2
+                  }, {
+                      content: '<h5 style="font-size: 1.5em;">Fruits</h5><div id="Apple"><h5 style="font-size: 1.5em;">15<span class="small">%</span></h5></div>'
+                  }]
+              })
+          ],
+      });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+
+      var chart = new Chartist.Pie('#ct-chart3',
+          {
+            series: [8, 50 ],
+            labels: ['', '']
+        }, {
+            donut: true,
+            donutWidth: 30,
+            startAngle: 300,
+            total: 200,
+              showLabel: false,
+              plugins: [
+                  Chartist.plugins.fillDonut({
+                      items: [{
+                          content: '',
+                          position: 'bottom',
+                          offsetY : 10,
+                          offsetX: -2
+                      }, {
+                          content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Herbs</h5><div id="Herb"><h5 style="font-size: 1.5em;">10<span class="small">%</span></h5></div>'
+                      }]
+                  })
+              ],
+          });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+
+      var chart = new Chartist.Pie('#ct-chart4',
+          {
+            series: [8, 50 ],
+            labels: ['', '']
+        }, {
+            donut: true,
+            donutWidth: 30,
+            startAngle: 300,
+            total: 200,
+              showLabel: false,
+              plugins: [
+                  Chartist.plugins.fillDonut({
+                      items: [{
+                          content: '',
+                          position: 'bottom',
+                          offsetY : 10,
+                          offsetX: -2
+                      }, {
+                          content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Breads</h5><div id="Bread"><h5 style="font-size: 1.5em;">10<span class="small">%</span></h5></div>'
+                      }]
+                  })
+              ],
+          });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+
+      var chart = new Chartist.Pie('#ct-chart5',
+          {
+            series: [10, 50 ],
+            labels: ['', '']
+        }, {
+            donut: true,
+            donutWidth: 30,
+            startAngle: 300,
+            total: 200,
+              showLabel: false,
+              plugins: [
+                  Chartist.plugins.fillDonut({
+                      items: [{
+                          content: '',
+                          position: 'bottom',
+                          offsetY : 10,
+                          offsetX: -2
+                      }, {
+                          content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 2em;">Vegetables</h5><div id="Apple"><h5 style="font-size: 2em;">15<span class="small">%</span></h5></div>'
+                      }]
+                  })
+              ],
+          });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+
+      var chart = new Chartist.Pie('#ct-chart6',
+          {
+            series: [10, 50 ],
+            labels: ['', '']
+        }, {
+            donut: true,
+            donutWidth: 30,
+            startAngle: 300,
+            total: 200,
+              showLabel: false,
+              plugins: [
+                  Chartist.plugins.fillDonut({
+                      items: [{
+                          content: '',
+                          position: 'bottom',
+                          offsetY : 10,
+                          offsetX: -2
+                      }, {
+                          content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Protein</h5><div id="Meat"><h5 style="font-size: 1.5em;">15<span class="small">%</span></h5></div>'
+                      }]
+                  })
+              ],
+          });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+      var chart = new Chartist.Pie('#ct-chart7',
+          {
+            series: [8, 50 ],
+            labels: ['', '']
+        }, {
+            donut: true,
+            donutWidth: 30,
+            startAngle: 300,
+            total: 200,
+              showLabel: false,
+              plugins: [
+                  Chartist.plugins.fillDonut({
+                      items: [{
+                          content: '',
+                          position: 'bottom',
+                          offsetY : 10,
+                          offsetX: -2
+                      }, {
+                          content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Condiments</h5><div id="Sauce"><h5 style="font-size: 1.5em;">10<span class="small">%</span></h5></div>'
+                      }]
+                  })
+              ],
+          });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+
+$(".Icons-Container").addClass("ChartContainer2");
+
+});
+
+$("#Icon6").click(function(){
+
+  $("#foods").css("display", "flex");
+  $("#foods").html("<h2>Protein</h2><hr/><ul><li>1 Pound of Beef</li><li>1 Pound of Chicken</li><li>1 Package of Bologna</li><li>2 Packages of Sausage</li><li>2 Packages of Pepperoni</li><li>2 Packages of Bacon</li></ul>");
+  $(".Content").addClass("Content2");
+  $("#Icon6").addClass("BigIconSmall");
+  $("#Icon2").addClass("IconSmall");
+  $("#Icon3").addClass("IconSmall");
+  $("#Icon1").addClass("IconSmall");
+  $("#Icon5").addClass("IconSmall");
+  $("#Icon4").addClass("IconSmall");
+  $("#Icon7").addClass("IconSmall");
+
+  $("#Icon1").removeClass("BigIconSmall");
+  $("#Icon2").removeClass("BigIconSmall");
+  $("#Icon3").removeClass("BigIconSmall");
+  $("#Icon5").removeClass("BigIconSmall");
+  $("#Icon4").removeClass("BigIconSmall");
+  $("#Icon7").removeClass("BigIconSmall");
+
+  var chart = new Chartist.Pie('#ct-chart2',
+      {
+        series: [15, 50 ],
+        labels: ['', '']
+    }, {
+        donut: true,
+        donutWidth: 30,
+        startAngle: 300,
+        total: 200,
+          showLabel: false,
+          plugins: [
+              Chartist.plugins.fillDonut({
+                  items: [{
+                      content: '',
+                      position: 'bottom',
+                      offsetY : 10,
+                      offsetX: -2
+                  }, {
+                      content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Dairy</h5><div id="Milk"><h5 style="font-size: 1.5em;">25<span class="small">%</span></h5></div>'
+                  }]
+              })
+          ],
+      });
+
+  chart.on('draw', function(data) {
+      if(data.type === 'slice' && data.index == 0) {
+          // Get the total path length in order to use for dash array animation
+          var pathLength = data.element._node.getTotalLength();
+
+          // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+          data.element.attr({
+              'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+          });
+
+          // Create animation definition while also assigning an ID to the animation for later sync usage
+          var animationDefinition = {
+              'stroke-dashoffset': {
+                  id: 'anim' + data.index,
+                  dur: 1200,
+                  from: -pathLength + 'px',
+                  to:  '0px',
+                  easing: Chartist.Svg.Easing.easeOutQuint,
+                  fill: 'freeze'
+              }
+          };
+
+          // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+          data.element.attr({
+              'stroke-dashoffset': -pathLength + 'px'
+          });
+
+          // We can't use guided mode as the animations need to rely on setting begin manually
+
+          data.element.animate(animationDefinition, true);
+      }
+  });
+
+  var chart = new Chartist.Pie('#ct-chart1',
+      {
+        series: [10, 50 ],
+        labels: ['', '']
+    }, {
+        donut: true,
+        donutWidth: 30,
+        startAngle: 300,
+        total: 200,
+          showLabel: false,
+          plugins: [
+              Chartist.plugins.fillDonut({
+                  items: [{
+                      content: '',
+                      position: 'bottom',
+                      offsetY : 10,
+                      offsetX: -2
+                  }, {
+                      content: '<h5 style="font-size: 1.5em;">Fruits</h5><div id="Apple"><h5 style="font-size: 1.5em;">15<span class="small">%</span></h5></div>'
+                  }]
+              })
+          ],
+      });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+
+      var chart = new Chartist.Pie('#ct-chart3',
+          {
+            series: [8, 50 ],
+            labels: ['', '']
+        }, {
+            donut: true,
+            donutWidth: 30,
+            startAngle: 300,
+            total: 200,
+              showLabel: false,
+              plugins: [
+                  Chartist.plugins.fillDonut({
+                      items: [{
+                          content: '',
+                          position: 'bottom',
+                          offsetY : 10,
+                          offsetX: -2
+                      }, {
+                          content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Herbs</h5><div id="Herb"><h5 style="font-size: 1.5em;">10<span class="small">%</span></h5></div>'
+                      }]
+                  })
+              ],
+          });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+
+      var chart = new Chartist.Pie('#ct-chart4',
+          {
+            series: [8, 50 ],
+            labels: ['', '']
+        }, {
+            donut: true,
+            donutWidth: 30,
+            startAngle: 300,
+            total: 200,
+              showLabel: false,
+              plugins: [
+                  Chartist.plugins.fillDonut({
+                      items: [{
+                          content: '',
+                          position: 'bottom',
+                          offsetY : 10,
+                          offsetX: -2
+                      }, {
+                          content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Breads</h5><div id="Bread"><h5 style="font-size: 1.5em;">10<span class="small">%</span></h5></div>'
+                      }]
+                  })
+              ],
+          });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+
+      var chart = new Chartist.Pie('#ct-chart5',
+          {
+            series: [10, 50 ],
+            labels: ['', '']
+        }, {
+            donut: true,
+            donutWidth: 30,
+            startAngle: 300,
+            total: 200,
+              showLabel: false,
+              plugins: [
+                  Chartist.plugins.fillDonut({
+                      items: [{
+                          content: '',
+                          position: 'bottom',
+                          offsetY : 10,
+                          offsetX: -2
+                      }, {
+                          content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Vegetables</h5><div id="Apple"><h5 style="font-size: 1.5em;">15<span class="small">%</span></h5></div>'
+                      }]
+                  })
+              ],
+          });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+
+      var chart = new Chartist.Pie('#ct-chart6',
+          {
+            series: [10, 50 ],
+            labels: ['', '']
+        }, {
+            donut: true,
+            donutWidth: 30,
+            startAngle: 300,
+            total: 200,
+              showLabel: false,
+              plugins: [
+                  Chartist.plugins.fillDonut({
+                      items: [{
+                          content: '',
+                          position: 'bottom',
+                          offsetY : 10,
+                          offsetX: -2
+                      }, {
+                          content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 2em;">Protein</h5><div id="Meat"><h5 style="font-size: 2em;">15<span class="small">%</span></h5></div>'
+                      }]
+                  })
+              ],
+          });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+      var chart = new Chartist.Pie('#ct-chart7',
+          {
+            series: [8, 50 ],
+            labels: ['', '']
+        }, {
+            donut: true,
+            donutWidth: 30,
+            startAngle: 300,
+            total: 200,
+              showLabel: false,
+              plugins: [
+                  Chartist.plugins.fillDonut({
+                      items: [{
+                          content: '',
+                          position: 'bottom',
+                          offsetY : 10,
+                          offsetX: -2
+                      }, {
+                          content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Condiments</h5><div id="Sauce"><h5 style="font-size: 1.5em;">10<span class="small">%</span></h5></div>'
+                      }]
+                  })
+              ],
+          });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+
+$(".Icons-Container").addClass("ChartContainer2");
+});
+
+$("#Icon7").click(function(){
+
+  $("#foods").css("display", "flex");
+        $("#foods").html("<h2>Condiments</h2><hr/><ul><li>1 Bottle of Ketchup</li><li>1 Bottle of BBQ</li><li>1 Jar of Honey Mustard</li><li>1 Jar of Mayonaise</li><li>1 Bottle of Ranch</li><li>1 Bottle of Sweet Chili Sauce</li></ul>");
+  $(".Content").addClass("Content2");
+  $("#Icon7").addClass("BigIconSmall");
+  $("#Icon2").addClass("IconSmall");
+  $("#Icon3").addClass("IconSmall");
+  $("#Icon1").addClass("IconSmall");
+  $("#Icon5").addClass("IconSmall");
+  $("#Icon4").addClass("IconSmall");
+  $("#Icon6").addClass("IconSmall");
+
+  $("#Icon1").removeClass("BigIconSmall");
+  $("#Icon2").removeClass("BigIconSmall");
+  $("#Icon3").removeClass("BigIconSmall");
+  $("#Icon5").removeClass("BigIconSmall");
+  $("#Icon4").removeClass("BigIconSmall");
+  $("#Icon6").removeClass("BigIconSmall");
+
+  var chart = new Chartist.Pie('#ct-chart2',
+      {
+        series: [15, 50 ],
+        labels: ['', '']
+    }, {
+        donut: true,
+        donutWidth: 30,
+        startAngle: 300,
+        total: 200,
+          showLabel: false,
+          plugins: [
+              Chartist.plugins.fillDonut({
+                  items: [{
+                      content: '',
+                      position: 'bottom',
+                      offsetY : 10,
+                      offsetX: -2
+                  }, {
+                      content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Dairy</h5><div id="Milk"><h5 style="font-size: 1.5em;">25<span class="small">%</span></h5></div>'
+                  }]
+              })
+          ],
+      });
+
+  chart.on('draw', function(data) {
+      if(data.type === 'slice' && data.index == 0) {
+          // Get the total path length in order to use for dash array animation
+          var pathLength = data.element._node.getTotalLength();
+
+          // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+          data.element.attr({
+              'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+          });
+
+          // Create animation definition while also assigning an ID to the animation for later sync usage
+          var animationDefinition = {
+              'stroke-dashoffset': {
+                  id: 'anim' + data.index,
+                  dur: 1200,
+                  from: -pathLength + 'px',
+                  to:  '0px',
+                  easing: Chartist.Svg.Easing.easeOutQuint,
+                  fill: 'freeze'
+              }
+          };
+
+          // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+          data.element.attr({
+              'stroke-dashoffset': -pathLength + 'px'
+          });
+
+          // We can't use guided mode as the animations need to rely on setting begin manually
+
+          data.element.animate(animationDefinition, true);
+      }
+  });
+
+  var chart = new Chartist.Pie('#ct-chart1',
+      {
+        series: [10, 50 ],
+        labels: ['', '']
+    }, {
+        donut: true,
+        donutWidth: 30,
+        startAngle: 300,
+        total: 200,
+          showLabel: false,
+          plugins: [
+              Chartist.plugins.fillDonut({
+                  items: [{
+                      content: '',
+                      position: 'bottom',
+                      offsetY : 10,
+                      offsetX: -2
+                  }, {
+                      content: '<h5 style="font-size: 1.5em;">Fruits</h5><div id="Apple"><h5 style="font-size: 1.5em;">15<span class="small">%</span></h5></div>'
+                  }]
+              })
+          ],
+      });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+
+      var chart = new Chartist.Pie('#ct-chart3',
+          {
+            series: [8, 50 ],
+            labels: ['', '']
+        }, {
+            donut: true,
+            donutWidth: 30,
+            startAngle: 300,
+            total: 200,
+              showLabel: false,
+              plugins: [
+                  Chartist.plugins.fillDonut({
+                      items: [{
+                          content: '',
+                          position: 'bottom',
+                          offsetY : 10,
+                          offsetX: -2
+                      }, {
+                          content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Herbs</h5><div id="Herb"><h5 style="font-size: 1.5em;">10<span class="small">%</span></h5></div>'
+                      }]
+                  })
+              ],
+          });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+
+      var chart = new Chartist.Pie('#ct-chart4',
+          {
+            series: [8, 50 ],
+            labels: ['', '']
+        }, {
+            donut: true,
+            donutWidth: 30,
+            startAngle: 300,
+            total: 200,
+              showLabel: false,
+              plugins: [
+                  Chartist.plugins.fillDonut({
+                      items: [{
+                          content: '',
+                          position: 'bottom',
+                          offsetY : 10,
+                          offsetX: -2
+                      }, {
+                          content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Breads</h5><div id="Bread"><h5 style="font-size: 1.5em;">10<span class="small">%</span></h5></div>'
+                      }]
+                  })
+              ],
+          });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+
+      var chart = new Chartist.Pie('#ct-chart5',
+          {
+            series: [10, 50 ],
+            labels: ['', '']
+        }, {
+            donut: true,
+            donutWidth: 30,
+            startAngle: 300,
+            total: 200,
+              showLabel: false,
+              plugins: [
+                  Chartist.plugins.fillDonut({
+                      items: [{
+                          content: '',
+                          position: 'bottom',
+                          offsetY : 10,
+                          offsetX: -2
+                      }, {
+                          content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Vegetables</h5><div id="Apple"><h5 style="font-size: 1.5em;">15<span class="small">%</span></h5></div>'
+                      }]
+                  })
+              ],
+          });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+
+      var chart = new Chartist.Pie('#ct-chart6',
+          {
+            series: [10, 50 ],
+            labels: ['', '']
+        }, {
+            donut: true,
+            donutWidth: 30,
+            startAngle: 300,
+            total: 200,
+              showLabel: false,
+              plugins: [
+                  Chartist.plugins.fillDonut({
+                      items: [{
+                          content: '',
+                          position: 'bottom',
+                          offsetY : 10,
+                          offsetX: -2
+                      }, {
+                          content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 1.5em;">Protein</h5><div id="Meat"><h5 style="font-size: 1.5em;">15<span class="small">%</span></h5></div>'
+                      }]
+                  })
+              ],
+          });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+      var chart = new Chartist.Pie('#ct-chart7',
+          {
+            series: [8, 50 ],
+            labels: ['', '']
+        }, {
+            donut: true,
+            donutWidth: 30,
+            startAngle: 300,
+            total: 200,
+              showLabel: false,
+              plugins: [
+                  Chartist.plugins.fillDonut({
+                      items: [{
+                          content: '',
+                          position: 'bottom',
+                          offsetY : 10,
+                          offsetX: -2
+                      }, {
+                          content: '<div style="display:flex; flex-direction:column;"><h5 style="font-size: 2em;">Condiments</h5><div id="Sauce"><h5 style="font-size: 2em;">10<span class="small">%</span></h5></div>'
+                      }]
+                  })
+              ],
+          });
+
+      chart.on('draw', function(data) {
+          if(data.type === 'slice' && data.index == 0) {
+              // Get the total path length in order to use for dash array animation
+              var pathLength = data.element._node.getTotalLength();
+
+              // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+              data.element.attr({
+                  'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+              });
+
+              // Create animation definition while also assigning an ID to the animation for later sync usage
+              var animationDefinition = {
+                  'stroke-dashoffset': {
+                      id: 'anim' + data.index,
+                      dur: 1200,
+                      from: -pathLength + 'px',
+                      to:  '0px',
+                      easing: Chartist.Svg.Easing.easeOutQuint,
+                      fill: 'freeze'
+                  }
+              };
+
+              // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+              data.element.attr({
+                  'stroke-dashoffset': -pathLength + 'px'
+              });
+
+              // We can't use guided mode as the animations need to rely on setting begin manually
+
+              data.element.animate(animationDefinition, true);
+          }
+      });
+
+$(".Icons-Container").addClass("ChartContainer2");
+});
