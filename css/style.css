@@ -1,0 +1,237 @@
+*, html {
+  margin: 0;
+}
+body {
+  background-color: honeydew;
+  /*background-image: url("../cupcakes.png");*/
+}
+.blackModal {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+.wrapper {
+  /*width: 1024px;
+  height: 400px;
+  margin: auto;*/
+}
+header {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  rgba(255, 168, 0, .81) width: 100%;
+  height: 180px;
+  background-color: rgba(255, 168, 0, .7);
+  border-bottom: 1px double brown;
+}
+.poff, .house {
+  padding: 5px;
+  color: #94654C;
+}
+h1, .font-effect-shadow-multiple {
+  font-family: 'Fugaz One', cursive;
+  /*font-family: 'Chewy', cursive;*/
+  justify-content: center;
+  font-size: 8em;
+  color: #94654C;
+  letter-spacing: 8px;
+}
+.Content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 900px;
+  height: 100px;
+  /*height: 600px;*/
+  /*background-color: linen;*/
+  /*background-color: rgba(236, 199, 129, .6);
+  background-color: white;*/
+  position: relative;
+  align-self: center;
+  text-align: center;
+  /*background-image: url("../Downloads/cupcakes.png");*/
+  /*background-repeat: repeat;*/
+}
+.Content2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  width: auto;
+  /* padding-left: 25px; */
+  /* width: 900px; */
+  height: 100px;
+  /* height: 600px; */
+  /* background-color: linen; */
+  position: relative;
+  align-self: center;
+  text-align: center;
+  /* background-image: url("../Downloads/cupcakes.png"); */
+  /* background-repeat: repeat; */
+}
+.Circle-Container, .Chart-Container, .Recipes-Container {
+  /* width: 850px; */
+  width: 100%;
+  padding-top: 50px;
+  height: 420px;
+  /* display: flex; */
+  /* margin-top: 15px; */
+  margin: auto;
+  align-self: center;
+  justify-content: center;
+  position: relative;
+  /* justify-content: center; */
+  /* flex-direction: column; */
+  /* background-color: black; */
+  /* position: absolute; */
+}
+.RecipeContent {
+  display: flex;
+}
+.ChartContainer2 {
+  padding-top: 50px;
+  height: 420px;
+  width: auto;
+  /* display: flex; */
+  /* margin-top: 15px; */
+  margin: auto;
+  align-self: center;
+  justify-content: center;
+  position: relative;
+  /* justify-content: center; */
+  /* flex-direction: column; */
+  /* background-color: black; */
+  /* position: absolute; */
+}
+.DairyPList {
+  font-family: 'Fugaz One', cursive;
+  margin: auto;
+  font-size: 3em;
+  text-align: center;
+  letter-spacing: 2px;
+  font-weight: 100;
+  text-decoration: underline;
+}
+.RecipesList {
+  margin: auto;
+}
+#smallChart {
+  display: none;
+}
+.Chart-Container {
+  display: flex;
+  width: auto;
+}
+.chart-legend2 {
+  width: 380px;
+  height: 200px;
+}
+.chart-legend {
+  width: 380px;
+  height: 200px;
+}
+.chart-legend li span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 15px;
+  font-size: 2em;
+  font-family: 'Helvetica', cursive;
+  font-weight: 600;
+  padding-bottom: 10px;
+}
+.chart-legend ul {
+  list-style-type: none;
+}
+.Circle {
+  width: 400px;
+  height: 400px;
+  border-radius: 100%;
+  background-color: orange;
+  border: 5px double darkorange;
+  display: flex;
+  margin: auto;
+  padding: 8px;
+  float: left;
+  margin-right: -25px;
+  /* margin-bottom: 50px; */
+  position: relative;
+  z-index: 1;
+}
+.Circle:last-child {
+  margin-left: 200px;
+  margin-top: -135px;
+  position: relative;
+  z-index: 1;
+}
+.Circle:hover, .Circle:active {
+  background-color: darkorange;
+  position: relative;
+  z-index: 2;
+  color: white;
+  text-shadow: 3px 3px 3px brown;
+  border: 5px double brown;
+}
+h2 {
+  font-family: 'Fugaz One', cursive;
+  margin: auto;
+  font-size: 3em;
+  text-align: center;
+  letter-spacing: 2px;
+}
+ol li, h3 {
+  font-family: 'Passion One', cursive;
+  font-size: 2em;
+}
+.settings, .silverware, .pie {
+  display: block;
+}
+.smaller {
+  max-width: 530px;
+  max-height: 530px;
+}
+#foods {
+  overflow: auto;
+  background-color: rgb(228, 172, 113);
+  border-radius: 1em;
+  border: 2px double #eee;
+  padding: 10px;
+  margin: auto;
+  margin-top: 42px;
+  /* width: 500px; */
+  height: 750px;
+  display: none;
+}
+#foods h2 {
+  font-size: 2.5em;
+  font-weight: 100;
+  color: #fff;
+  text-shadow: 2px 2px 2px brown;
+}
+#foods li {
+  font-size: 2em;
+  font-weight: 100;
+  color: #fff;
+  text-shadow: 1px 1px 1px black;
+  margin-top: 25px;
+  text-align: left;
+  font-family: 'Oswald', sans-serif;
+  text-indent: 25px;
+}
+
+/* Donut charts get built from Pie charts but with a fundamentally difference in the drawing approach. The donut is drawn using arc strokes for maximum freedom in styling */
+
+.ct-series-a .ct-slice-donut {
+  /* give the donut slice a custom colour */
+  stroke: blue;
+  /* customize stroke width of the donut slices in CSS. Note that this property is already set in JavaScript and label positioning also relies on this. In the right situation though it can be very useful to style this property. You need to use !important to override the style attribute */
+  stroke-width: 5px !important;
+  /* create modern looking rounded donut charts */
+  stroke-linecap: round;
+}
